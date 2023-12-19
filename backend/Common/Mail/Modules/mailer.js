@@ -1,4 +1,6 @@
 const mail = require('nodemailer');
+const welcome_template = require('../Templates/welcome.js');
+const signin_otp = require('../Templates/sign_in_OTP.js');
 
 const transporter = mail.createTransport({
   service : 'Gmail',
@@ -16,7 +18,7 @@ const mailFunctions = {
         from : 'thanuskumaara@gmail.com',
         to : user_email,
         subject : 'OTP for account sign up - AI Study Mate',
-        html : user_email
+        html : signin_otp(user_email,)
       }
     }
     else if(type == "ForgotPassword"){
@@ -65,12 +67,12 @@ const mailFunctions = {
       else return {code:200}
     });
   },
-  Welcome : async (user_email)=>{
+  Welcome : async (user_email, user_name, pass)=>{
     const mailOptions={
       from : 'thanuskumaara@gmail.com',
         to : user_email,
         subject : 'Welcome Aboard - AI Study Mate',
-        html : user_email
+        html : welcome_template(user_email,user_name,pass)
     }
     transporter.sendMail(mailOptions,(err,info)=>{
       if(err){
