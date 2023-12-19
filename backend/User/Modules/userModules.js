@@ -1,4 +1,4 @@
-const db = require('../../Common/Database/SQLconnector');
+const db = require('../../Database/SQLconnector.js');
 
 const userServices = {
   SignUp : async (name, email, password, work)=>{
