@@ -18,7 +18,7 @@ TEMPLATE_RESET_PASS_OTP = (email, Name, otp) => {
         column-gap: 5px;
       }
       .OTP-elem{
-        width: 50px;
+        width: 20px;
         height: 50px;
         font-size: 20px;
         text-align: centre;
