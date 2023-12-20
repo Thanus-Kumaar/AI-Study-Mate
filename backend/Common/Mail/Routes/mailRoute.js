@@ -25,4 +25,6 @@ router.post('/resetSuccess',(req,res)=>{
 //sends mail for updation of user profile
 router.post('/profileUpdate',(req,res)=>{
   mail_controller.ProfileUpdated(req,res);
-})
+});
+
+module.exports = router;

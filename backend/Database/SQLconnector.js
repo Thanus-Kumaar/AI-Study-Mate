@@ -12,11 +12,21 @@ pool.getConnection((err,con)=>{
   if(err) console.log(err);
   else{
     console.log('Connected to Database');
-    const sqlInit = fs.readFileSync('./schema.sql','utf8');
-    pool.query(sqlInit,(error, result)=>{
-      if(error) console.log(error);
-      else console.log("Created schema successfully !");
-    });
+    const sqlInit = fs.readFileSync("D:\\Project Works\\AI Study Mate\\backend\\Database\\schema.sql",'utf8');
+    const tables = sqlInit.split(';');
+    try{
+      for (const table of tables){
+        if(table.trim() != ''){
+            pool.query(table,(error, result)=>{
+              if(error) console.log(error);
+              else console.log("Created table successfully !");
+          });
+        }
+      }
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 })
 

@@ -9,7 +9,7 @@ const transporter = mail.createTransport({
   service : 'Gmail',
   auth : {
     user : 'thanuskumaara@gmail.com',
-    pass : 'THANUSgmail@2005'
+    pass : 'thanusGOOGLE-2005'
   }
 });
 
@@ -32,13 +32,16 @@ const mailFunctions = {
         html : reset_otp(user_email, name, otp)
       }
     }
-    transporter.sendMail(mailOptions,(err,info)=>{
+    try{
+      transporter.sendMail(mailOptions);
+      return {code:200}
+    }
+    catch(err){
       if(err){
         console.log(err);
         return {code:404}
       }
-      else return {code:200}
-    });
+    }
   },
   PassResetSuccess : async (user_email, name)=>{
     const mailOptions={
@@ -77,12 +80,17 @@ const mailFunctions = {
         subject : 'Welcome Aboard - AI Study Mate',
         html : welcome_template(user_email,user_name,pass)
     }
-    transporter.sendMail(mailOptions,(err,info)=>{
+    try{
+      transporter.sendMail(mailOptions);
+      return {code:200}
+    }
+    catch(err){
       if(err){
         console.log(err);
         return {code:404}
       }
-      else return {code:200}
-    });
+    }
   }
 }
+
+module.exports = mailFunctions;
