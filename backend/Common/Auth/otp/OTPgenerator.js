@@ -12,7 +12,7 @@ to avoid confusion of previous otps.
 const db = require('../../../Database/SQLconnector.js');
 const crypto = require('crypto');
 
-function generate_OTP(email){
+async function generate_OTP(email){
   //generates OTP
   const otp = Math.floor(1000 + Math.random() * 9000).toString();
   const hash = crypto.createHash('sha256');
