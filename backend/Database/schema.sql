@@ -26,6 +26,10 @@ Tables:
     primary key(Name, Date)
     foregin key User(User_ID)
     foregin key Lesson(Lesson_ID)
+
+  OTP
+    email varchar(255)
+    otp int
 */
 
 create table if not exists User(
@@ -56,4 +60,9 @@ create table if not exists Topic(
   primary key(Name, Date),
   foregin key User(User_ID),
   foregin key Lesson(Lesson_ID)
+);
+
+create table if not exists OTP(
+  email varchar(255),
+  otp int
 );
