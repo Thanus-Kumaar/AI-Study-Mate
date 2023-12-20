@@ -1,6 +1,9 @@
 const mail = require('nodemailer');
 const welcome_template = require('../Templates/welcome.js');
 const signin_otp = require('../Templates/sign_in_OTP.js');
+const reset_otp = require('../Templates/reset_pass_OTP.js');
+const profile = require('../Templates/profile_update.js');
+const reset_confirm = require('../Templates/reset_confirm.js');
 
 const transporter = mail.createTransport({
   service : 'Gmail',
@@ -11,14 +14,14 @@ const transporter = mail.createTransport({
 });
 
 const mailFunctions = {
-  OTPmail : async (user_email,type)=>{
+  OTPmail : async (user_email, type, name, otp)=>{
     let mailOptions;
     if(type == "SignIn"){
       mailOptions = {
         from : 'thanuskumaara@gmail.com',
         to : user_email,
         subject : 'OTP for account sign up - AI Study Mate',
-        html : signin_otp(user_email,)
+        html : signin_otp(user_email, name, otp)
       }
     }
     else if(type == "ForgotPassword"){
@@ -26,7 +29,7 @@ const mailFunctions = {
         from : 'thanuskumaara@gmail.com',
         to : user_email,
         subject : 'OTP for password recovery - AI Study Mate',
-        html : user_email
+        html : reset_otp(user_email, name, otp)
       }
     }
     transporter.sendMail(mailOptions,(err,info)=>{
@@ -37,12 +40,12 @@ const mailFunctions = {
       else return {code:200}
     });
   },
-  PassResetSuccess : async (user_email)=>{
+  PassResetSuccess : async (user_email, name)=>{
     const mailOptions={
       from : 'thanuskumaara@gmail.com',
         to : user_email,
         subject : 'Password reset successful - AI Study Mate',
-        html : user_email
+        html : reset_confirm(user_email, name)
     }
     transporter.sendMail(mailOptions,(err,info)=>{
       if(err){
@@ -52,12 +55,12 @@ const mailFunctions = {
       else return {code:200}
     });
   },
-  ProfileUpdated : async (user_email)=>{
+  ProfileUpdated : async (user_email, name, work)=>{
     const mailOptions={
       from : 'thanuskumaara@gmail.com',
         to : user_email,
         subject : 'Your profile modified - AI Study Mate',
-        html : user_email
+        html : profile(user_email, name, work)
     }
     transporter.sendMail(mailOptions,(err,info)=>{
       if(err){
