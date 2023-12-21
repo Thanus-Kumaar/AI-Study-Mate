@@ -16,7 +16,7 @@ async function validate_OTP(email,otp){
   encrypted_otp = hash.digest('hex');
 
   //checking if otp present in table
-  db.query("lock table OTP write;");
+  db.query("lock tables OTP write;");
   db.query("select * from OTP where email = ? and otp = ?",[email,encrypted_otp],(err, result)=>{
     if(err) console.log(err)
     else{
