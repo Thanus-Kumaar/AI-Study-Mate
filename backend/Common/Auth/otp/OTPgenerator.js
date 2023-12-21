@@ -20,16 +20,16 @@ async function generate_OTP(email){
   encrypted_otp = hash.digest('hex');
   
   // if the given email already has otps in table, removing it.
-  db.query("lock table OTP write;");
   db.query("delete from OTP where email = ?;",[email],(err,result)=>{
     if(err) console.log(err);
+    console.log(result);
   });
 
   // updating the otp table with hashed otp
   db.query("insert into OTP (email, otp) values(?,?);",[email, encrypted_otp],(err,result)=>{
     if(err) console.log(err);
+    console.log(result);
   });
-  db.query("unlock tables;");
   return otp;
 };
 

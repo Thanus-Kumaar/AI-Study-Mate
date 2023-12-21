@@ -29,5 +29,5 @@ create table if not exists Topic(
 );
 create table if not exists OTP(
   email varchar(255),
-  otp int
+  otp varchar(255)
 );

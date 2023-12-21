@@ -9,7 +9,7 @@ const transporter = mail.createTransport({
   service : 'Gmail',
   auth : {
     user : 'thanuskumaara@gmail.com',
-    pass : 'thanusGOOGLE-2005'
+    pass : 'honlxkaeqhxkemqk'
   }
 });
 
@@ -50,13 +50,16 @@ const mailFunctions = {
         subject : 'Password reset successful - AI Study Mate',
         html : reset_confirm(user_email, name)
     }
-    transporter.sendMail(mailOptions,(err,info)=>{
+    try{
+      transporter.sendMail(mailOptions);
+      return {code:200}
+    }
+    catch(err){
       if(err){
         console.log(err);
         return {code:404}
       }
-      else return {code:200}
-    });
+    }
   },
   ProfileUpdated : async (user_email, name, work)=>{
     const mailOptions={
@@ -65,13 +68,16 @@ const mailFunctions = {
         subject : 'Your profile modified - AI Study Mate',
         html : profile(user_email, name, work)
     }
-    transporter.sendMail(mailOptions,(err,info)=>{
+    try{
+      transporter.sendMail(mailOptions);
+      return {code:200}
+    }
+    catch(err){
       if(err){
         console.log(err);
         return {code:404}
       }
-      else return {code:200}
-    });
+    }
   },
   Welcome : async (user_email, user_name, pass)=>{
     const mailOptions={
