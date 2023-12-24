@@ -13,7 +13,7 @@ pool.getConnection((err,con)=>{
   if(err) console.log(err);
   else{
     console.log('Connected to Database');
-    const sqlInit = fs.readFileSync("D:\\Project Works\\AI Study Mate\\backend\\Database\\schema.sql",'utf8');
+    const sqlInit = fs.readFileSync(process.env.SQL_PATH,'utf8');
     const tables = sqlInit.split(';');
     try{
       for (const table of tables){

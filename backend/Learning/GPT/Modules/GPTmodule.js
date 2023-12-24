@@ -8,7 +8,7 @@ const model = GPT.getGenerativeModel({model : "gemini-pro"});
 GPTservices = {
   LearnTopic : async (topic)=>{
     try{
-      const prompt = `Explain about this ${topic} in detail. Explain the subtopics or concepts within this in detail. Also give what topics to read after this.Give response in markdown language.`;
+      const prompt = `Explain about this ${topic} in detail. Explain the subtopics or concepts within this in detail. Also give what topics to read after this. Give response in markdown language.`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
       return {code:200, content:response.text()};
