@@ -4,7 +4,7 @@
     <input v-model="topic" type="text">
     <button @click="getTopic()">Learn</button>
   </div>
-  <div v-html="renderedMarkdown" style="background-color: rgb(39, 39, 39); color: white; padding: 50px;"></div>
+  <div v-html="renderedMarkdown" style="padding: 50px;"></div>
 </template>
 
 <script>
@@ -40,5 +40,4 @@ export default {
 
 
 <style scoped>
-
 </style>

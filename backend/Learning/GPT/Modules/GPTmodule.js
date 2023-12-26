@@ -24,7 +24,7 @@ GPTservices = {
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const links = (response.text().split('\n'));
-      const resources = [];
+      let resources = "";
       for( i of links){
         if(i.includes("https://") && i!=undefined){
           let link = i.split('(')[1];
@@ -34,7 +34,7 @@ GPTservices = {
             let domain = parsedUrl.origin;
             console.log(domain)
             if(!resources.includes(domain)){
-              resources.push(domain);
+              resources = resources+"["+domain+"]"+"("+domain+")\n\n";
             }
           }
         }
