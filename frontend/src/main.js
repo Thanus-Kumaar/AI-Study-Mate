@@ -1,4 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import Display from './components/Display.vue'
+import Topic from './components/Topics.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.component("display",Display)
+app.component("topic", Topic)
+app.mount('#app')

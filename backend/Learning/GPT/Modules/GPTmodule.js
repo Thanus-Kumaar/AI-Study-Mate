@@ -1,5 +1,5 @@
 const {GoogleGenerativeAI} = require('@google/generative-ai');
-const {URL} = require('url')
+const {URL} = require('url');
 
 const GPT = new GoogleGenerativeAI(process.env.API_KEY);
 
@@ -8,10 +8,11 @@ const model = GPT.getGenerativeModel({model : "gemini-pro"});
 GPTservices = {
   LearnTopic : async (topic)=>{
     try{
-      const prompt = `Explain about this ${topic} in detail. Explain the subtopics or concepts within this in detail. Give Examples for each if possible.Give response in markdown language.`;
+      const prompt = `Give me only a question that i can ask you to explain about ${topic} in detail, providing explanation and examples related to it including the subtopics or concepts within the topic.`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
-      return {code:200, content:response.text()};
+      const response2 = await GPTservices.ChatBot(response.text());
+      return {code:200, content:response2.content};
     }
     catch(err){
       console.log(err);
@@ -20,26 +21,25 @@ GPTservices = {
   },
   PreRequisite : async (topic)=>{
     try{
-      const prompt = `Give me top resources/tutorials (avoid courses) and wikipedia page to learn and deeply understand ${topic}.Give response in markdown language and only the links`;
+      const prompt = `Give me top free resources/tutorials (avoid courses) and wikipedia page to learn and deeply understand ${topic}.Give response in markdown language and only the links`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const links = (response.text().split('\n'));
+      console.log(response.text());
       let resources = "";
       for( i of links){
         if(i.includes("https://") && i!=undefined){
           let link = i.split('(')[1];
-          if(link.startsWith("http")){
+          if(link!=undefined && link.startsWith("http")){
             let urlString = link.slice(0,link.length-1);
             let parsedUrl = new URL(urlString);
             let domain = parsedUrl.origin;
-            console.log(domain)
             if(!resources.includes(domain)){
               resources = resources+"["+domain+"]"+"("+domain+")\n\n";
             }
           }
         }
       }
-      console.log("List: ",resources);
       return {code:200, content:resources};
     }
     catch(err){
