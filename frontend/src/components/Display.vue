@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: beige; width: 1100px;">
+  <div style="background-color: beige; width: 1100px; min-height: 600px;">
     <div v-html="renderedMarkdown"></div>
   </div>
 </template>

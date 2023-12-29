@@ -1,11 +1,12 @@
 <template>
   <div class="topic-outer-div">
+    <span style="font-size: 20px; font-weight: 500;">Topics to Learn</span>
     <div v-for="topic in topics" class="topic-div">
       <div>{{ topic }}</div>
       <div class="topic-options">
-        <i class="fa-regular fa-trash-can fa-sm"></i>
-        <i class="fa-solid fa-pen-to-square fa-sm"></i>
-        <i class="fa-solid fa-play fa-sm" v-on:click="this.learn(topic)"></i>
+        <i class="fa-regular fa-trash-can fa-sm" @click="this.del(topic)"></i>
+        <i class="fa-solid fa-pen-to-square fa-sm" @click="this.rename(topic)"></i>
+        <i class="fa-solid fa-play fa-sm" @click="this.learn(topic)"></i>
       </div>
     </div>
     <button @click="this.addTopic">Add</button>
@@ -16,7 +17,7 @@
   export default{
     data(){
       return{
-        topics: ["Heap data strucutre","TCP protocol"],
+        topics: [],
       }
     },
     methods: {
@@ -26,7 +27,15 @@
       addTopic(){
         const t = prompt("Enter topic");
         this.topics.push(t);
-      }
+      },
+      del(t){
+        this.topics = this.topics.filter(topic => topic !== t);
+      },
+      rename(t){
+        const new_t = prompt("Rename the topic");
+        const i = this.topics.indexOf(t);
+        this.topics[i] = new_t;
+      },
     }
   }
 </script>
@@ -39,6 +48,7 @@
     font-size: 17px;
     text-align: center;
     width: 300px;
+    min-height: 600px;
     background-color:lavender;
     padding: 10px;
   }
