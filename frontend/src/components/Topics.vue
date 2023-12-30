@@ -26,7 +26,7 @@
       },
       addTopic(){
         const t = prompt("Enter topic");
-        this.topics.push(t);
+        if(t!= '' && t!=undefined) this.topics.push(t);
       },
       del(t){
         this.topics = this.topics.filter(topic => topic !== t);
@@ -36,11 +36,11 @@
         const i = this.topics.indexOf(t);
         this.topics[i] = new_t;
       },
-    }
+    },
   }
 </script>
 
-<style>
+<style scoped>
   .topic-outer-div{
     display: flex;
     flex-direction: column;
@@ -58,7 +58,7 @@
     justify-content: space-between;
     padding: 5px;
     padding-right: 0px;
-    background-color: rgb(255, 138, 96);
+    background-color: rgb(130, 182, 247);
   }
   .topic-options{
     width: 75px;
