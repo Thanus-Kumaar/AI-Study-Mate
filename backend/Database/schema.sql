@@ -9,6 +9,7 @@ create table if not exists User(
 );
 create table if not exists Lesson(
   Lesson_ID int auto_increment primary key,
+  Name varchar(255),
   Reference_Book varchar(255),
   Lesson_wiki varchar(255)
 );
