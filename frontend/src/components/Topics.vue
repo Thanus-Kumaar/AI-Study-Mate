@@ -1,6 +1,6 @@
 <template>
   <div class="topic-outer-div">
-    <span style="font-size: 20px; font-weight: 500;">Topics to Learn</span>
+    <span style="font-size: 20px; font-weight: 500; color: #F2F4F8;">Topics to Learn</span>
     <div v-for="topic in topics" class="topic-div">
       <div>{{ topic }}</div>
       <div class="topic-options">
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  import gsap from "gsap";
   export default{
     data(){
       return{
@@ -37,6 +38,12 @@
         this.topics[i] = new_t;
       },
     },
+    mounted(){
+      gsap.fromTo('.topic-outer-div',{duration:0.5, opacity:0, x:-100},{opacity:1, x:0, ease:"power3.in"})
+    },
+    beforeUnmount(){
+      gsap.to('.topic-outer-div',{opacity:0, x:-100, ease:"power3.out"})
+    }
   }
 </script>
 
@@ -49,7 +56,7 @@
     text-align: center;
     width: 300px;
     min-height: 600px;
-    background-color:lavender;
+    background-color: #101818;
     padding: 10px;
   }
   .topic-div{
@@ -58,7 +65,7 @@
     justify-content: space-between;
     padding: 5px;
     padding-right: 0px;
-    background-color: rgb(130, 182, 247);
+    background-color: #F2F4F8;
   }
   .topic-options{
     width: 75px;
@@ -70,5 +77,6 @@
   }
   i:hover{
     opacity: 0.5;
+    color: #000;
   }
 </style>

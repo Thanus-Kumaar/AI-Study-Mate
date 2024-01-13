@@ -29,9 +29,10 @@
     watch: {
       topic: {
         handler(newVal, oldVal){
-          this.getTopic(newVal);
+          if(newVal!="" && newVal!=undefined) this.getTopic(newVal);
         },
         deep: true,
+        immediate: true,
       },
     },
     methods: {
@@ -48,6 +49,7 @@
         })
         .catch(err=>{
           console.log(err);
+          alert(err);
         })
       }
     }
@@ -79,7 +81,7 @@
   }
 
   .main-div{
-    background-color: beige;
+    background-color: #F2F4F8;
     width: 1100px;
     min-height: 600px;
   }

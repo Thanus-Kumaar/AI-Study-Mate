@@ -3,7 +3,8 @@
     <topic @topic-sent="this.gotTopic" />
     <display :topic="this.topic_to_send" style="margin: 5px; padding: 15px;" />
   </div>
-  <div class="chatbot">ChatBot</div>
+  <div class="chatbot" @click="this.toggleChat">ChatBot</div>
+  <chat-bot class="chat-pos" v-if="chat" />
 </template>
 
 <script>
@@ -13,13 +14,20 @@ export default {
       topic: "",
       topic_to_send: "",
       prompt: "",
+      chat: false,
     };
   },
   methods:{
     gotTopic(t){
       this.topic = t;
       this.topic_to_send = this.topic;
+    },
+    toggleChat(){
+      this.chat = (!this.chat);
     }
+  },
+  mounted(){
+
   }
 };
 </script>
@@ -34,13 +42,11 @@ export default {
     background-color: lavender;
     cursor: pointer;
   }
-  .popup{
-    position: absolute;
+  .chat-pos{
+    position: fixed;
     left: 25%;
-    top: 20%;
+    top: 10%;
     z-index: 1;
-    width: 800px;
-    height: 500px;
     background-color: aqua;
   }
 </style>
