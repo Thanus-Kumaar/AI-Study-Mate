@@ -1,7 +1,8 @@
 <template>
-  <div style="display: flex; flex-direction: row; column-gap: 5px; justify-content: space-evenly;">
+  <div class="topbar">AI Study Mate</div>
+  <div style="display: flex; flex-direction: row; column-gap: 3px; background-color: #101818;">
     <topic @topic-sent="this.gotTopic" />
-    <display :topic="this.topic_to_send" style="margin: 5px; padding: 15px;" />
+    <display :topic="this.topic_to_send" style="margin-top: 5px; padding: 15px;" />
   </div>
   <div class="chatbot" @click="this.toggleChat">ChatBot</div>
   <chat-bot class="chat-pos" v-if="chat" />
@@ -33,6 +34,17 @@ export default {
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap');
+  .topbar{
+    height: 5vh;
+    background-color: #3E64B6;
+    font-family: poppins;
+    text-align: center;
+    justify-content: center;
+    color: #FFFF;
+    font-size: 20px;
+  }
+
   .chatbot{
     z-index: 10;
     margin: 10px;
