@@ -91,8 +91,13 @@
     font-size: 17px;
     text-align: center;
     width: 250px;
-    min-height: 600px;
+    overflow: scroll;
     background-color: #101818;
+    flex: 1;
+  }
+
+  .topic-outer-div::-webkit-scrollbar{
+    width: 0px;
   }
   .add-div{
     height: 40px;

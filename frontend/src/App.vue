@@ -1,11 +1,15 @@
 <template>
-  <div class="topbar">AI Study Mate</div>
-  <div style="display: flex; flex-direction: row; column-gap: 3px; background-color: #101818;">
-    <topic @topic-sent="this.gotTopic" />
-    <display :topic="this.topic_to_send" style="margin-top: 5px; padding: 15px;" />
+  <div style="height: 100vh; background-color: #101818; display: flex; flex-direction: column;">
+    <div class="topbar">AI Study Mate</div>
+    <div class="content-div">
+      <div style="display: flex; flex-direction: column;">
+        <topic @topic-sent="this.gotTopic" />
+        <pomo-timer />
+      </div>
+      <display :topic="this.topic_to_send" />
+      <chat-bot />
+    </div>
   </div>
-  <div class="chatbot" @click="this.toggleChat">ChatBot</div>
-  <chat-bot class="chat-pos" v-if="chat" />
 </template>
 
 <script>
@@ -14,8 +18,7 @@ export default {
     return {
       topic: "",
       topic_to_send: "",
-      prompt: "",
-      chat: false,
+
     };
   },
   methods:{
@@ -23,9 +26,6 @@ export default {
       this.topic = t;
       this.topic_to_send = this.topic;
     },
-    toggleChat(){
-      this.chat = (!this.chat);
-    }
   },
   mounted(){
 
@@ -43,22 +43,20 @@ export default {
     justify-content: center;
     color: #FFFF;
     font-size: 20px;
+    border-bottom: 3px solid #101818;
   }
 
-  .chatbot{
-    z-index: 10;
-    margin: 10px;
-    position: absolute;
-    right: 30px;
-    padding: 5px;
-    background-color: lavender;
-    cursor: pointer;
+  .content-div{
+    display: flex;
+    flex-direction: row;
+    column-gap: 3px;
+    flex: 1;
+    overflow: scroll;
+
   }
-  .chat-pos{
-    position: fixed;
-    left: 25%;
-    top: 10%;
-    z-index: 1;
-    background-color: aqua;
+
+  .content-div::-webkit-scrollbar{
+    width: 0px;
   }
+
 </style>

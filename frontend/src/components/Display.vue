@@ -5,6 +5,9 @@
       <div class="loading-spinner"></div>
     </div>
     <div v-html="renderedMarkdown" v-else></div>
+    <div style="display: flex; justify-content: right;" v-if="this.markdownText!=''">
+      <div class="save">Save</div>
+    </div>
   </div>
 </template>
 
@@ -15,7 +18,7 @@
   export default{
     data() {
       return {
-        markdownText: '# Hello, this is a Markdown text!',
+        markdownText: '',
         renderedMarkdown: '',
         loading: false
       }
@@ -73,16 +76,36 @@
   }
 
   .loading-div{
-    width: 1100px;
     text-align: center;
     font-size: 24px;
     padding: 10px;
-    transform:translateY(100%) ;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .main-div{
     background-color: #F2F4F8;
     width: 1100px;
-    min-height: 600px;
+    max-height: 100%;
+    overflow: scroll;
+    padding: 10px;
+    flex: 1;
+    position: relative;
+  }
+
+  .main-div::-webkit-scrollbar{
+    width: 0px;
+  }
+
+  .save{
+    text-align: center;
+    width: 100px;
+    font-family: poppins;
+    font-size: 13px;
+    background-color: #3498db;
+    padding: 5px;
+    color: #F2F4F8;
+    border-radius: 7px;
+    z-index: 10;
   }
 </style>

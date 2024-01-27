@@ -1,9 +1,9 @@
 <template>
-  <div class="pop-up">
+  <div class="chat-div">
     <div class="chat-body" v-html="this.renderedMarkdown">
     </div>
     <div class="chat">
-      <input type="text" placeholder="Enter a prompt" class="chat-input" v-model="this.prompt_msg">
+      <input type="text" placeholder="Enter a prompt" class="chat-input" v-model="this.prompt_msg" @keyup.enter="this.send_prompt">
       <button class="send" @click="this.send_prompt">Send</button>
     </div>
   </div>
@@ -42,22 +42,28 @@
 </script>
 
 <style scoped>
-  .pop-up{
-    width: 800px;
+  .chat-div{
+    width: 450px;
     text-align: center;
     padding: 2px;
     border: 1px solid;
-    background-color: rgb(84, 91, 91);
+    background-color: #101818;
+  }
+  .chat-div::-webkit-scrollbar{
+    width: 0px;
   }
   .chat-body{
-    height: 500px;
-    background-color: rgb(152, 152, 255);
-    margin: 5px;
+    height: 91%;
+    background-color: #D1D3D7;
     text-align: left;
+    padding: 0px 10px 10px 10px;
     overflow: scroll;
-    padding-left: 10px;
+  }
+  .chat-body::-webkit-scrollbar{
+    width: 0px;
   }
   .chat-input{
+    vertical-align: bottom;
     margin: 0px 5px 5px 5px;
     width: 97%;
     height: 30px;
@@ -76,6 +82,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 5px;
   }
   .send{
     height: 30px;
