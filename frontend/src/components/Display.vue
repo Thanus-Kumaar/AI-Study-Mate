@@ -59,7 +59,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .loading-spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-left: 4px solid #3498db;

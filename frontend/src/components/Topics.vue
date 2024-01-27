@@ -13,7 +13,7 @@
         <div v-if="this.options[index] == 1" class="topic-options">
           <div class="minor-options">
             <i class="fa-solid fa-trash-can" style="color: #101818; margin-top: 2px;" @click="this.del(topic)"></i>
-            <i class="fa-solid fa-pen-to-square" style="color: #101818; margin-top: 2px;n" @click="this.rename(topic)"></i>
+            <i class="fa-solid fa-pen-to-square" style="color: #101818; margin-top: 2px;n" @click="this.rename(index)"></i>
           </div>
           <div style="background-color: #3E64B6; border-radius: 100%; width: 25px; height: 25px;">
             <div style="margin-top: 2px; margin-left: 1px;"><i class="fa-solid fa-play fa-sm" style="color: #F2F4F8;" @click="this.learn(topic)"></i></div>
@@ -56,9 +56,8 @@
       del(t){
         this.topics = this.topics.filter(topic => topic !== t);
       },
-      rename(t){
+      rename(i){
         const new_t = prompt("Rename the topic");
-        const i = this.topics.indexOf(t);
         this.topics[i] = new_t;
       },
       showOptions(index){
