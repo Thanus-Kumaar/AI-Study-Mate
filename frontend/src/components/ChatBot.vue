@@ -10,6 +10,11 @@
         }"
         v-html="chat"
       ></div>
+      <div v-if="this.loading" class="chat-body-odd">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
       <div class="clearfix"></div>
     </div>
     <div class="chat">
@@ -33,6 +38,7 @@ export default {
   data() {
     return {
       prompt_msg: "",
+      loading: false,
       current_chat: [],
     };
   },
@@ -40,9 +46,11 @@ export default {
     send_prompt() {
       if (this.prompt_msg !== "" && this.prompt_msg !== undefined) {
         const para = { prompt: this.prompt_msg };
+        this.loading = true;
         axios
           .get("http://localhost:8000/GPT/Chat", { params: para })
           .then((Response) => {
+            this.loading = false;
             const markdownText = Response.data;
             const md = new MarkdownIt();
             const renderedMarkdown = md.render(markdownText);
@@ -81,13 +89,13 @@ export default {
 .chat-div::-webkit-scrollbar {
   width: 0px;
 }
-.chat-container{
+.chat-container {
   flex: 1;
   height: 90%;
   overflow-y: scroll;
 }
 
-.chat-container::-webkit-scrollbar{
+.chat-container::-webkit-scrollbar {
   width: 0px;
 }
 .chat-body-even {
@@ -100,10 +108,6 @@ export default {
   background-color: #d1d3d7;
   text-align: left;
   padding: 0px 10px 10px 10px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
   float: right;
   clear: both;
 }
@@ -117,10 +121,6 @@ export default {
   background-color: #d1d3d7;
   text-align: left;
   padding: 0px 10px 10px 10px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
   float: left;
   clear: both;
 }
@@ -159,5 +159,50 @@ export default {
 .send {
   height: 30px;
   margin: 3px;
+}
+
+.chat-body-odd > div {
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.chat-body-odd .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.chat-body-odd .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
 </style>
