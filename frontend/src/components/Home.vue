@@ -12,7 +12,53 @@
         
       </div>
     </div>
-    <div>Hola Amigos</div>
+    <div style="background-color: #101818; height: 200px;">
+      <div class="features">
+        FEATURES
+      </div>
+      <div class="features-desc">
+        Explore what our application can provide!
+      </div>
+    </div>
+    <div class="feature-div">
+      <div class="bg-div">
+
+      </div>
+      <div class="feature-flex">
+        <div class="feat">
+          <div class="features-text">
+            TOPICS
+          </div>
+          <div class="desc">
+            <div style="width: 900px; margin-left: auto; margin-right: auto;">Learn topics exclusively using advanced AI tools at your disposal. Enter topic to read and instanly recieve high quality content within seconds</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="features-text">
+            CHAT BOT
+          </div>
+          <div class="desc">
+            <div style="width: 900px; margin-left: auto; margin-right: auto;">Clarify doubts in real-time through interactive conversations with Bard AI via our chatbot and take your learning experience to next level. Export chats as Pdf to refer them later</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="features-text">
+            QUIZZER
+          </div>
+          <div class="desc">
+            <div style="width: 900px; margin-left: auto; margin-right: auto;">Learn topics exclusively using advanced AI tools at your disposal. Enter topic to read and instanly recieve high quality content within seconds</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="features-text">
+            POMODORO
+          </div>
+          <div class="desc">
+            <div style="width: 900px; margin-left: auto; margin-right: auto;">Learn topics exclusively using advanced AI tools at your disposal. Enter topic to read and instanly recieve high quality content within seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -102,5 +148,70 @@
 }
 .visit>button:hover{
   transform: scale(1.1);
+}
+.features{
+  width: 100%;
+  text-align: center;
+  font-family: poppins;
+  font-size: 70px;
+  font-weight: 300;
+  color: white;
+  padding-top: 20px;
+}
+.features-desc{
+  width: 100%;
+  text-align: center;
+  font-family: poppins;
+  font-size: 25px;
+  font-weight: 200;
+  position: relative;
+  top: -15px;
+  color: white;
+}
+.features-text{
+  width: 100%;
+  text-align: center;
+  font-family: poppins;
+  font-size: 80px;
+  font-weight: 300;
+  z-index: 5;
+  transition: 0.2s;
+}
+.feat{
+  border: 1px solid #101818;
+  position: relative;
+}
+.feat:hover>.features-text{
+  opacity: 0;
+}
+.feat:hover>.desc{
+  opacity: 100;
+}
+.desc{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+  background-color: #101818;
+  color: white;
+  text-align: center;
+  font-family: poppins;
+  font-weight: 200;
+  padding-top: 30px;
+  opacity: 0;
+  transition: 0.3s;
+}
+.bg-div{
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+}
+
+.feature-flex{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #101818;
 }
 </style>
