@@ -75,8 +75,19 @@ export default {
   padding: 2px;
   border: 1px solid;
   background-color: #101818;
+  display: flex;
+  flex-direction: column;
 }
 .chat-div::-webkit-scrollbar {
+  width: 0px;
+}
+.chat-container{
+  flex: 1;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.chat-container::-webkit-scrollbar{
   width: 0px;
 }
 .chat-body-even {

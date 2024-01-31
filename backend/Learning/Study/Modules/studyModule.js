@@ -43,7 +43,7 @@ const StudyServices = {
   },
   addLesson : async (lesson, wiki, ref_book, topics)=>{
     try{
-      const result = db.query("insert into lesson (Name, Reference_Book, Lesson_wiki) values(?,?,?);",[lesson, ref_book, wiki]);
+      db.query("insert into lesson (Name, Reference_Book, Lesson_wiki) values(?,?,?);",[lesson, ref_book, wiki]);
       const lesson_ID = db.query("select lesson_ID from lesson where name = ?",lesson);
       let result1;
       for(i of topics){
