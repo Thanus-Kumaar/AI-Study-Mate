@@ -59,6 +59,10 @@
         </div>
       </div>
     </div>
+    <div class="footer">
+      <div class="footer-title">AI Study Mate</div>
+      <div class="contact">Contact Team</div>
+    </div>
   </div>
 </template>
 
@@ -111,7 +115,7 @@
 
 .bg-content{
   position: absolute;
-  top: 200px;
+  top: 40vh;
   left: 50%;
   transform: translateX(-50%);
   width: 1000px;
@@ -213,5 +217,36 @@
   display: flex;
   flex-direction: column;
   border: 2px solid #101818;
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #101818;
+  height: 45px;
+}
+
+.footer-title{
+  font-size: 25px;
+  font-weight: 200;
+  margin-left: 45vw;
+  margin-top: 5px;
+  color: white;
+  font-family: poppins;
+}
+
+.contact{
+  font-size: 15px;
+  font-weight: 200;
+  margin-top: 10px;
+  color: white;
+  font-family: poppins;
+  margin-right: 50px;
+}
+
+.contact:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>
