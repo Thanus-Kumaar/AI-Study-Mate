@@ -6,7 +6,7 @@
     </div>
     <div v-html="renderedMarkdown" v-else></div>
     <div style="display: flex; justify-content: right;" v-if="this.markdownText!=''">
-      <div class="save">Save</div>
+      <div class="save" @click="this.SaveTopic">Save</div>
     </div>
   </div>
 </template>
@@ -51,11 +51,26 @@
           this.renderedMarkdown = md.render(this.markdownText);
         })
         .catch(err=>{
+          this.loading = false;
           console.log(err);
           alert(err);
         })
+      },
+      SaveTopic(){
+        console.log(this.topic);
+        const text = this.markdownText.slice(0,(this.markdownText.indexOf("[https")));
+        const currentDate = new Date();
+        console.log(currentDate)
+        axios.post('http://localhost:8000/study/saveTopic',{topic:this.topic, date:"2024-02-10", content:text, user_ID:1})
+        .then(Response=>{
+          console.log(Response);
+        })
+        .catch(err=>{
+          console.log(err);
+        })
       }
-    }
+    },
+    
   }
 </script>
 

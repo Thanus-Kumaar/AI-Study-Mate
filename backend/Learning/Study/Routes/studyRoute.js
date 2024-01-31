@@ -3,7 +3,7 @@ const studyController = require('../Controllers/studyController.js');
 
 const router = express.Router();
 
-router.post('/AddTopic',(req,res)=>{
+router.post('/saveTopic',(req,res)=>{
   studyController.SaveTopic(req,res);
 });
 
