@@ -60,8 +60,12 @@
         console.log(this.topic);
         const text = this.markdownText.slice(0,(this.markdownText.indexOf("[https")));
         const currentDate = new Date();
-        console.log(currentDate)
-        axios.post('http://localhost:8000/study/saveTopic',{topic:this.topic, date:"2024-02-10", content:text, user_ID:1})
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+        const day = currentDate.getDate().toString().padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+
+        axios.post('http://localhost:8000/study/saveTopic',{topic:this.topic, date:formattedDate, content:text, user_ID:1})
         .then(Response=>{
           console.log(Response);
         })

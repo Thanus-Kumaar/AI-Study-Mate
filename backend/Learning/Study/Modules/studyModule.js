@@ -62,16 +62,18 @@ const StudyServices = {
     return new Promise((resolve,rejects)=>{
       try{
         console.log(date)
-        const result = db.query("select * from Topic where date=?;",[date],(err)=>{
-          console.log(err)
-          rejects({code:500});
-          return;
+        db.query("select * from Topic where DATE(date)=?",[date],(err,result)=>{
+          if (err){
+            console.log(err)
+            rejects({code:500});
+            return;
+          }
+          if(result.length>0){
+            console.log(result);
+            resolve({code:200,topics:result})
+          }
+          else resolve({code:100});
         });
-        if(result.length>0){
-          console.log(result);
-          resolve({code:200})
-        }
-        else resolve({code:100});
       }
       catch(err){
         console.log(err);
