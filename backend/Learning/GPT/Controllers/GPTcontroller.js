@@ -3,6 +3,7 @@ const GPTservices = require('../Modules/GPTmodule.js');
 const GPTcontroller = {
   LearnTopic : async (req,res)=>{
     const {topic} = req.query;
+    console.log(req)
     const ans = await GPTservices.LearnTopic(topic);
     const resources = await GPTservices.PreRequisite(topic);
     if(ans.code == 200 && resources.code == 200){

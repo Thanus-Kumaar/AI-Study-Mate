@@ -104,11 +104,17 @@ export default {
   overflow: scroll;
   padding: 10px;
   flex: 1;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
   position: relative;
 }
 
-.main-div::-webkit-scrollbar {
-  width: 0px;
+.loading-div {
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+  margin: auto; 
 }
 
 .save {
@@ -121,13 +127,6 @@ export default {
   color: #f2f4f8;
   border-radius: 7px;
   z-index: 10;
-}
-
-.loading-div {
-  text-align: center;
-  font-size: 24px;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 10px; /* Add some space between the loading div and the save button */
 }
 </style>
