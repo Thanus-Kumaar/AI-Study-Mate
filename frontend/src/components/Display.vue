@@ -1,7 +1,6 @@
 <template>
   <div class="main-div">
     <div class="loading-div" v-if="this.loading">
-      Waiting for Response
       <TopicLoading />
     </div>
     <div v-html="renderedMarkdown" v-else></div>
