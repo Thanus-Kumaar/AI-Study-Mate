@@ -1,8 +1,8 @@
 <template>
   <div class="main-div">
     <div class="loading-div" v-if="this.loading">
-      Waiting for response from server
-      <div class="loading-spinner"></div>
+      Waiting for Response
+      <TopicLoading />
     </div>
     <div v-html="renderedMarkdown" v-else></div>
     <div
@@ -17,6 +17,8 @@
 <script>
 import MarkdownIt from "markdown-it";
 import axios from "axios";
+import TopicLoading from "./Utilities/topicLoading.vue";
+import Topics from "./Topics.vue";
 
 export default {
   data() {
@@ -31,6 +33,10 @@ export default {
       type: String,
       required: true,
     },
+  },
+  components: {
+    TopicLoading,
+    Topics,
   },
   watch: {
     topic: {
@@ -91,33 +97,6 @@ export default {
 </script>
 
 <style scoped>
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #3498db;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto; /* Adjust margin as needed */
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-div {
-  text-align: center;
-  font-size: 24px;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .main-div {
   background-color: #f2f4f8;
   width: 1100px;
@@ -142,5 +121,13 @@ export default {
   color: #f2f4f8;
   border-radius: 7px;
   z-index: 10;
+}
+
+.loading-div {
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
