@@ -1,6 +1,6 @@
 <template>
   <div class="chat-div">
-    <div class="chat-container">
+    <div class="chat-container" ref="chat">
       <div
         v-for="(chat, index) in current_chat"
         :key="index"
@@ -25,6 +25,7 @@
       />
       <button class="send" @click="handle_chat">Send</button>
     </div>
+    <div class="scroll-down" @click="ScrollDown">|</div>
   </div>
 </template>
 
@@ -60,6 +61,8 @@ export default {
             this.current_chat.push(renderedMarkdown);
           })
           .catch((err) => {
+            this.loading = false;
+            this.current_chat.pop();
             console.error(err);
             alert(err);
           });
@@ -75,6 +78,10 @@ export default {
       this.send_prompt();
       this.prompt_msg = "";
     },
+    ScrollDown() {
+      const chatdiv = this.$refs.chat;
+      chatdiv.scrollTop = chatdiv.scrollHeight;
+    }
   },
 };
 </script>
@@ -82,6 +89,7 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap");
 .chat-div {
+  position: relative;
   width: 450px;
   text-align: center;
   padding: 2px;
@@ -107,11 +115,10 @@ export default {
   width: auto;
   max-width: 70%;
   margin: 5px;
-  padding: 5px;
   border-radius: 10px;
   background-color: #d1d3d7;
   text-align: left;
-  padding: 0px 10px 10px 10px;
+  padding: 5px 10px 5px 10px;
   float: right;
   clear: both;
 }
@@ -120,11 +127,10 @@ export default {
   width: auto;
   max-width: 70%;
   margin: 5px;
-  padding: 5px;
   border-radius: 10px;
   background-color: #d1d3d7;
   text-align: left;
-  padding: 0px 10px 10px 10px;
+  padding: 5px 10px 5px 10px;
   float: left;
   clear: both;
 }
@@ -163,5 +169,15 @@ export default {
 .send {
   height: 30px;
   margin: 3px;
+}
+.scroll-down{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: rgba(111, 111, 111, 0.6);
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  z-index: 5;
 }
 </style>
