@@ -109,6 +109,9 @@ export default {
   position: relative;
 }
 
+.main-div::-webkit-scrollbar{
+  width: 0px;
+}
 .loading-div {
   text-align: center;
   font-size: 24px;
