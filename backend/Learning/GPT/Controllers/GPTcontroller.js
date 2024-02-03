@@ -27,6 +27,16 @@ const GPTcontroller = {
     }
     else res.status(500).json({error:"An error occured !"});
   },
+  GetQuizDetails : async (req,res)=>{
+    const {topic} = req.query;
+    const ans = await GPTservices.GetQuizDetails(topic);
+    if(ans.code==200){
+      res.status(200).json(ans.content);
+    }
+    else{
+      res.status(500).json({error:"An error occured !"});
+    }
+  }
 };
 
 module.exports = GPTcontroller;
