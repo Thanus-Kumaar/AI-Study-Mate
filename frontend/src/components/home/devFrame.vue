@@ -53,6 +53,10 @@ export default {
   transition: 0.3s;
 }
 
+.profile-card:hover {
+  transform: scale(1.05);
+}
+
 .profile-pic {
   width: 250px;
   height: 250px;
