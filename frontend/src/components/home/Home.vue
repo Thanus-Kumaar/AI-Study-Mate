@@ -70,8 +70,8 @@ import Footer from "../home/footer.vue";
 import Hero from "../home/hero.vue";
 import DevFrame from "../home/devFrame.vue";
 
-import tharunImg from "../../assets/tharun.webp";
-import thanusImg from "../../assets/thanus.webp";
+import tharunImg from "../../assets/tharun.jpg";
+import thanusImg from "../../assets/thanus.jpg";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -102,23 +102,20 @@ export default {
     },
   },
   mounted() {
-    // Define the wrappers
     const wrappers = gsap.utils.toArray(".wrapper");
 
-    // Apply ScrollTrigger to each wrapper
     wrappers.forEach((wrapper, index) => {
       gsap.to(wrapper, {
         scrollTrigger: {
           trigger: wrapper,
           pin: true,
-          scrub: 2,
+          scrub: 1,
           snap: {
             snapTo: 1 / wrappers.length,
             duration: 0.1,
             delay: 0.1 * index,
             ease: "power3.inOut",
           },
-          end: () => `+=80%`,
         },
       });
     });

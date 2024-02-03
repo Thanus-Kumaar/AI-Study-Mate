@@ -93,10 +93,10 @@ export default {
 }
 .socials a {
   margin: 0px 10px;
-  color: white;
   transition: 0.2s;
 }
 .socials a:hover {
+  color: rgb(62, 100, 182);
   transform: scale(1.1);
 }
 </style>
