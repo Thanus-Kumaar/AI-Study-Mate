@@ -26,6 +26,32 @@
         />
       </div>
     </div>
+    <div style="background-color: #282e2e; height: 150px">
+      <div class="developers">DEVELOPERS</div>
+    </div>
+    <div class="dev-flex">
+      <DevFrame
+        name="Tharun Kumarr A"
+        :imgSrc="tharunImg"
+        Position="Frontend Developer"
+        :socials="[
+          { name: 'GitHub', link: 'abc' },
+          { name: 'LinkedIn', link: 'abc' },
+          { name: 'GMail', link: 'abc' },
+        ]"
+      />
+      <DevFrame
+        class="dev-frame"
+        name="Thanus Kumaar A"
+        :imgSrc="thanusImg"
+        Position="Backend Developer"
+        :socials="[
+          { name: 'GitHub', link: 'abc' },
+          { name: 'LinkedIn', link: 'abc' },
+          { name: 'GMail', link: 'abc' },
+        ]"
+      />
+    </div>
     <Footer />
   </div>
 </template>
@@ -34,14 +60,20 @@
 import Feature from "../home/feature.vue";
 import Footer from "../home/footer.vue";
 import Hero from "../home/hero.vue";
+import DevFrame from "../home/devFrame.vue";
+
+import tharunImg from "../../assets/tharun.jpg";
+import thanusImg from "../../assets/thanus.jpg";
+
 export default {
   data() {
-    return {};
+    return { tharunImg, thanusImg };
   },
   components: {
     Feature,
     Footer,
     Hero,
+    DevFrame,
   },
   methods: {
     push() {
@@ -116,34 +148,7 @@ export default {
   background-color: #101818;
   color: white;
 }
-.feat {
-  border: 1px solid #101818;
-  position: relative;
-}
-.feat:hover > .features-text {
-  opacity: 0;
-}
-.feat:hover > .desc {
-  opacity: 100;
-}
-.desc {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 0;
-  background: linear-gradient(to right, rgb(62, 100, 182), rgb(125, 144, 181));
-  color: #101818;
-  text-align: center;
-  font-family: poppins;
-  font-weight: 400;
-  font-size: 20px;
-  padding-top: 30px;
-  opacity: 0;
-  transition: 0.3s;
-  border-radius: 10px;
-}
+
 .bg-div {
   position: absolute;
   overflow: hidden;
@@ -154,5 +159,24 @@ export default {
   display: flex;
   flex-direction: column;
   border: 2px solid #101818;
+}
+
+.developers {
+  width: 100%;
+  text-align: center;
+  font-family: poppins;
+  font-size: 70px;
+  font-weight: 300;
+  color: white;
+  padding-top: 20px;
+  cursor: default;
+}
+
+.dev-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
 </style>
