@@ -1,4 +1,4 @@
-const StudyServices = require('../Modules/studyModule.js');
+const StudyServices = require('../Modules/historyModule.js');
 
 const studyController = {
   SaveTopic : async (req,res)=>{

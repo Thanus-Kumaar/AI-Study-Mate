@@ -63,13 +63,28 @@ GPTservices = {
   },
   Ref_Book : async (lesson)=>{
     try{
-      prompt = `Give me one best reference book to completely understand ${lesson}. Give me answer in the form of a dictionary with two elements, {title:title, author:author_name}.`;
+      let prompt = `Give me one best reference book to completely understand ${lesson}. Give me answer in the form of a dictionary with two elements, {title:title, author:author_name}.`;
       prompt = prompt + ". Explain in not more than 500 words";
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const book = response.text().split('}')[0];
       console.log(response.text());
       return {code:200, content:book};
+    }
+    catch(err){
+      if(err){
+        console.log(err);
+        return {code:500};
+      }
+    }
+  },
+  GetQuizDetails : async (topic)=>{
+    try{
+      let prompt = `Give me 5 deep questions and elaborate answers to assist me in understanding the topic: ${topic} in detail. The result shoud me in json format where each element in the array of json should have two keys: question and answer(answer should be in 200 words)`;
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      console.log(response.text());
+      return {code:200, content:response.text()};
     }
     catch(err){
       if(err){

@@ -15,4 +15,8 @@ router.get('/ref_book',(req,res)=>{
   GPTcontroller.Ref_Book(req,res);
 });
 
+router.get('/quiz',(req,res)=>{
+  GPTcontroller.GetQuizDetails(req,res);
+})
+
 module.exports = router;
