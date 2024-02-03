@@ -64,6 +64,8 @@ export default {
             this.loading = false;
             this.current_chat.pop();
             console.error(err);
+            this.current_chat.push("Error in sending prompt");
+            this.loading = false;
             alert(err);
           });
       }
@@ -88,6 +90,10 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap");
+
+*{
+  font-family: 'Poppins', sans-serif;;
+}
 .chat-div {
   position: relative;
   width: 450px;
@@ -97,6 +103,7 @@ export default {
   background-color: #101818;
   display: flex;
   flex-direction: column;
+  font-size: small;
 }
 .chat-div::-webkit-scrollbar {
   width: 0px;
@@ -116,7 +123,7 @@ export default {
   max-width: 70%;
   margin: 5px;
   border-radius: 10px;
-  background-color: #d1d3d7;
+  background-color: #9cb2de;
   text-align: left;
   padding: 5px 10px 5px 10px;
   float: right;
