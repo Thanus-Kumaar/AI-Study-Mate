@@ -1,56 +1,64 @@
 <template>
   <div class="page-div" style="background-color: #282e2e">
-    <Hero />
-    <div style="background-color: #282e2e; height: 190px">
-      <div class="features">FEATURES</div>
-      <div class="features-desc">Explore what our application can provide!</div>
+    <div class="hero-wrapper" style="height: 100vh">
+      <Hero />
     </div>
-    <div class="feature-div">
-      <div class="bg-div"></div>
-      <div class="feature-flex">
-        <Feature
-          title="TOPICS"
-          content="Learn topics exclusively using advanced AI tools at your disposal. Enter the topic to read and instantly receive high-quality content within seconds."
-        />
-        <Feature
-          title="CHATBOT"
-          content="Clarify doubts in real-time through interactive conversations with Bard AI via our chatbot and take your learning experience to the next level. Export chats as PDF to refer to them later."
-        />
-        <Feature
-          title="QUIZZER"
-          content="Test your knowledge on various topics using our quizzer. Get instant feedback and improve your learning experience."
-        />
-        <Feature
-          title="POMODORO"
-          content="Stay focused and manage your time effectively using our Pomodoro timer. Enhance your productivity and learning experience."
-        />
+    <div class="feature-wrapper" style="height: 100vh">
+      <div style="background-color: #282e2e; height: 190px">
+        <div class="features">FEATURES</div>
+        <div class="features-desc">
+          Explore what our application can provide!
+        </div>
+      </div>
+      <div class="feature-div">
+        <div class="bg-div"></div>
+        <div class="feature-flex">
+          <Feature
+            title="TOPICS"
+            content="Learn topics exclusively using advanced AI tools at your disposal. Enter the topic to read and instantly receive high-quality content within seconds."
+          />
+          <Feature
+            title="CHATBOT"
+            content="Clarify doubts in real-time through interactive conversations with Bard AI via our chatbot and take your learning experience to the next level. Export chats as PDF to refer to them later."
+          />
+          <Feature
+            title="QUIZZER"
+            content="Test your knowledge on various topics using our quizzer. Get instant feedback and improve your learning experience."
+          />
+          <Feature
+            title="POMODORO"
+            content="Stay focused and manage your time effectively using our Pomodoro timer. Enhance your productivity and learning experience."
+          />
+        </div>
       </div>
     </div>
-    <div style="background-color: #282e2e; height: 150px">
-      <div class="developers">DEVELOPERS</div>
-    </div>
-    <div class="dev-flex">
-      <DevFrame
-        name="Tharun Kumarr A"
-        :imgSrc="tharunImg"
-        Position="Frontend Developer"
-        :socials="[
-          { name: 'GitHub', link: 'abc' },
-          { name: 'LinkedIn', link: 'abc' },
-          { name: 'GMail', link: 'abc' },
-        ]"
-      />
-      <DevFrame
-        class="dev-frame"
-        name="Thanus Kumaar A"
-        :imgSrc="thanusImg"
-        Position="Backend Developer"
-        :socials="[
-          { name: 'GitHub', link: 'abc' },
-          { name: 'LinkedIn', link: 'abc' },
-          { name: 'GMail', link: 'abc' },
-        ]"
-      />
+    <div class="devs-wrapper" style="height: 100vh">
+      <div style="background-color: #282e2e; height: 150px">
+        <div class="developers">DEVELOPERS</div>
+      </div>
+      <div class="dev-flex">
+        <DevFrame
+          name="Tharun Kumarr A"
+          :imgSrc="tharunImg"
+          Position="Frontend Developer"
+          :socials="[
+            { name: 'GitHub', link: 'abc' },
+            { name: 'LinkedIn', link: 'abc' },
+            { name: 'GMail', link: 'abc' },
+          ]"
+        />
+        <DevFrame
+          class="dev-frame"
+          name="Thanus Kumaar A"
+          :imgSrc="thanusImg"
+          Position="Backend Developer"
+          :socials="[
+            { name: 'GitHub', link: 'abc' },
+            { name: 'LinkedIn', link: 'abc' },
+            { name: 'GMail', link: 'abc' },
+          ]"
+        />
+      </div>
     </div>
     <Footer />
   </div>
@@ -64,6 +72,11 @@ import DevFrame from "../home/devFrame.vue";
 
 import tharunImg from "../../assets/tharun.webp";
 import thanusImg from "../../assets/thanus.webp";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   data() {
@@ -89,6 +102,32 @@ export default {
     },
   },
   mounted() {
+    // Feature Wrapper
+    gsap.to(".feature-wrapper", {
+      scrollTrigger: {
+        trigger: ".feature-wrapper",
+        start: "top 80%", // Start scrolling down when 80% of the current wrapper is visible
+        end: "top 20%", // Snap to the top when 20% of the current wrapper is visible
+        scrub: true, // Enables a smooth scrubbing effect
+        markers: true, // Remove this line in production, it's for debugging
+      },
+      y: 0, // Snap to the top
+    });
+
+    // Devs Wrapper
+    gsap.to(".devs-wrapper", {
+      scrollTrigger: {
+        trigger: ".devs-wrapper",
+        start: "top 80%", // Start scrolling down when 80% of the current wrapper is visible
+        endTrigger: "body", // Change to the next wrapper or any other end trigger
+        end: "top 20%", // Start scrolling up when 20% of the next wrapper is visible
+        scrub: true, // Enables a smooth scrubbing effect
+        markers: true, // Remove this line in production, it's for debugging
+      },
+      y: 0, // Snap to the top
+    });
+
+    // Initialize Vanta after setting up ScrollTrigger
     this.loadScript(() => {
       this.vantaEffect = VANTA.FOG({
         el: this.$refs.VantaBG,
