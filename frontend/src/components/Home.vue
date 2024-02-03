@@ -1,5 +1,5 @@
 <template>
-  <div class="page-div">
+  <div class="page-div" style="background-color: #282e2e;">
     <div ref="VantaBG" class="bg">
       <div class="bg-content">
         <div class="title-text">AI Study Mate</div>
@@ -9,10 +9,9 @@
         <div class="visit">
           <button @click="push">Visit App</button>
         </div>
-        
       </div>
     </div>
-    <div style="background-color: #101818; height: 200px;">
+    <div style="background-color: #282e2e; height: 190px;">
       <div class="features">
         FEATURES
       </div>
@@ -162,6 +161,12 @@
   color: white;
   padding-top: 20px;
 }
+.feature-div{
+  margin: 0px 20px 0px 20px;
+  border-radius:10px;
+  padding: 5px;
+  background-color: #101818;
+}
 .features-desc{
   width: 100%;
   text-align: center;
@@ -180,6 +185,8 @@
   font-weight: 300;
   z-index: 5;
   transition: 0.2s;
+  background-color: #101818;
+  color: white;
 }
 .feat{
   border: 1px solid #101818;
@@ -197,15 +204,17 @@
   left: 0px;
   right: 0px;
   bottom: 0px;
-  z-index: -1;
-  background-color: #101818;
-  color: white;
+  z-index: 0;
+  background: linear-gradient(to right, rgb(62, 100, 182), rgb(125, 144, 181));
+  color: #101818;
   text-align: center;
   font-family: poppins;
-  font-weight: 200;
+  font-weight: 400;
+  font-size: 20px;
   padding-top: 30px;
   opacity: 0;
   transition: 0.3s;
+  border-radius: 10px;
 }
 .bg-div{
   position: absolute;
@@ -223,7 +232,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #101818;
+  background-color: #282e2e;
   height: 45px;
 }
 
