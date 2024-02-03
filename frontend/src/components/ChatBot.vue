@@ -179,5 +179,6 @@ export default {
   bottom: 55px;
   left: 50%;
   z-index: 5;
+  cursor: pointer;
 }
 </style>
