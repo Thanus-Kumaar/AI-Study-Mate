@@ -7,7 +7,7 @@ import Topic from './components/Topics.vue'
 import ChatBot from './components/ChatBot.vue'
 import Pomodoro from './components/Pomodoro.vue'
 import MainApp from './components/MainApp.vue'
-import Home from './components/Home.vue'
+import Home from './components/home/Home.vue'
 
 const app = createApp(App)
 app.component("display", Display)
