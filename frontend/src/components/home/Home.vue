@@ -111,15 +111,14 @@ export default {
         scrollTrigger: {
           trigger: wrapper,
           pin: true,
-          scrub: 1,
+          scrub: 2,
           snap: {
             snapTo: 1 / wrappers.length,
             duration: 0.1,
             delay: 0.1 * index,
             ease: "power3.inOut",
           },
-          end: () => `+=70%`, // Adjust as needed
-          markers: true, // Add markers for visualization
+          end: () => `+=80%`,
         },
       });
     });
