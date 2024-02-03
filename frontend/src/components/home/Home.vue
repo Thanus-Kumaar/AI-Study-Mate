@@ -1,9 +1,9 @@
 <template>
   <div class="page-div" style="background-color: #282e2e">
-    <div class="hero-wrapper" style="height: 100vh">
+    <div class="wrapper" style="height: 100vh">
       <Hero />
     </div>
-    <div class="feature-wrapper" style="height: 100vh">
+    <div class="wrapper" style="height: 100vh">
       <div style="background-color: #282e2e; height: 190px">
         <div class="features">FEATURES</div>
         <div class="features-desc">
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="devs-wrapper" style="height: 100vh">
+    <div class="wrapper" style="height: 100vh">
       <div style="background-color: #282e2e; height: 150px">
         <div class="developers">DEVELOPERS</div>
       </div>
@@ -102,29 +102,28 @@ export default {
     },
   },
   mounted() {
-    // Feature Wrapper
-    gsap.to(".feature-wrapper", {
-      scrollTrigger: {
-        trigger: ".feature-wrapper",
-        start: "top 80%", // Start scrolling down when 80% of the current wrapper is visible
-        end: "top 20%", // Snap to the top when 20% of the current wrapper is visible
-        scrub: true, // Enables a smooth scrubbing effect
-        markers: true, // Remove this line in production, it's for debugging
-      },
-      y: 0, // Snap to the top
-    });
+    // Define the wrappers
+    const wrappers = gsap.utils.toArray(".wrapper");
 
-    // Devs Wrapper
-    gsap.to(".devs-wrapper", {
-      scrollTrigger: {
-        trigger: ".devs-wrapper",
-        start: "top 80%", // Start scrolling down when 80% of the current wrapper is visible
-        endTrigger: "body", // Change to the next wrapper or any other end trigger
-        end: "top 20%", // Start scrolling up when 20% of the next wrapper is visible
-        scrub: true, // Enables a smooth scrubbing effect
-        markers: true, // Remove this line in production, it's for debugging
-      },
-      y: 0, // Snap to the top
+    // Apply ScrollTrigger to each wrapper
+    wrappers.forEach((wrapper, index) => {
+      gsap.to(wrapper, {
+        scrollTrigger: {
+          trigger: wrapper,
+          pin: true,
+          scrub: 1,
+          snap: {
+            snapTo: 1 / wrappers.length,
+            duration: 0.1,
+            delay: 0.1 * index,
+            ease: "power3.inOut",
+            scrollTop: {
+              snapTo: 1 / wrappers.length,
+            },
+          },
+          end: `+=50%`, // Adjust as needed
+        },
+      });
     });
 
     // Initialize Vanta after setting up ScrollTrigger
