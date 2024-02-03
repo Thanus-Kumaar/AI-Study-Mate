@@ -62,8 +62,8 @@ import Footer from "../home/footer.vue";
 import Hero from "../home/hero.vue";
 import DevFrame from "../home/devFrame.vue";
 
-import tharunImg from "../../assets/tharun.jpg";
-import thanusImg from "../../assets/thanus.jpg";
+import tharunImg from "../../assets/tharun.webp";
+import thanusImg from "../../assets/thanus.webp";
 
 export default {
   data() {
