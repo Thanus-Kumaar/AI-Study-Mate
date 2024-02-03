@@ -117,11 +117,9 @@ export default {
             duration: 0.1,
             delay: 0.1 * index,
             ease: "power3.inOut",
-            scrollTop: {
-              snapTo: 1 / wrappers.length,
-            },
           },
-          end: `+=50%`, // Adjust as needed
+          end: () => `+=70%`, // Adjust as needed
+          markers: true, // Add markers for visualization
         },
       });
     });
