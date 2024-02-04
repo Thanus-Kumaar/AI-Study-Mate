@@ -129,6 +129,7 @@ export default {
   display: flex;
   flex-direction: column;
   font-size: small;
+  overflow-y: scroll;
   flex: 1;
 }
 .chat-div::-webkit-scrollbar {
@@ -138,7 +139,7 @@ export default {
   flex: 1;
   height: 80%;
   overflow-y: scroll;
-  padding: 10px 5px 5px 5px;
+  padding: 0 5px 5px 5px;
 }
 
 .chat-container::-webkit-scrollbar {
@@ -220,7 +221,7 @@ export default {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background-color: rgba(115, 115, 115, 0.5);
+  background-color: rgba(85, 85, 85, 0.5);
   position: absolute;
   bottom: 65px;
   left: 45%;

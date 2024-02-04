@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 35px 0 0 0;
+    padding: 35px 0 20px 0;
     color: white;
   }
   .add-button {
