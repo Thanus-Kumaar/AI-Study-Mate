@@ -6,7 +6,6 @@
     <div class="rendering-div" v-else>
       <div class="topic-name">{{ this.toTitleCase(this.topic) }}</div>
       <div v-html="renderedMarkdown" class="markdown-div"></div>
-      <div class="save" @click="this.SaveTopic" v-if="this.markdownText != ''">Save</div>
     </div>
   </div>
 </template>

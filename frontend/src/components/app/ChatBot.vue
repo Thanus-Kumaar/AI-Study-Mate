@@ -219,7 +219,7 @@ export default {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background-color: rgba(170, 170, 170, 0.5);
+  background-color: rgba(115, 115, 115, 0.5);
   position: absolute;
   bottom: 65px;
   left: 45%;
