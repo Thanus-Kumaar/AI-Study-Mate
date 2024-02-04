@@ -4,18 +4,15 @@
     <div class="topics-container">
       <div v-for="(topic, index) in topics" class="topic-div" :key="index">
         <div class="active-button">
-          <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-            <!-- Adding a circular border around the existing circle -->
+          <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
             <circle
               cx="50%"
               cy="50%"
-              r="9"
+              r="6"
               fill="none"
               stroke="rgb(62, 100, 182)"
               stroke-width="1"
             />
-            <!-- Centering the circle inside the SVG -->
-            <circle cx="50%" cy="50%" r="8" :fill="circleFillColor" />
           </svg>
         </div>
         <div @click="this.learn(topic)" class="individual-topic">
@@ -44,7 +41,6 @@ export default {
       inputVal: "",
       inInput: false,
       options: [],
-      circleFillColor: "#282e2e",
     };
   },
   methods: {
@@ -71,9 +67,6 @@ export default {
       const new_t = prompt("Rename the topic");
       this.topics[i] = new_t;
     },
-    changeFillColor(newColor) {
-      this.circleFillColor = newColor;
-    },
   },
   mounted() {
     gsap.fromTo(
@@ -98,7 +91,7 @@ export default {
   overflow: scroll;
   background-color: #282e2e;
   flex: 1;
-  margin: 15px 0 15px 0;
+  margin: 25px 0 15px 0;
 }
 .topic-outer-div::-webkit-scrollbar {
   width: 0px;
@@ -110,21 +103,22 @@ export default {
   display: flex;
   flex-direction: row;
   color: white;
-  margin: 10px 0 0 5px;
   border-radius: 10px;
+  cursor: default;
+  padding: 10px 5px 10px 5px;
 }
 input {
-  width: 85%;
-  padding: 5px 15px 5px 15px;
+  width: 90%;
+  padding: 10px 5px 10px 15px;
   background-color: #282e2e;
   border: none;
   outline: none;
   margin-top: 5px;
-  border-radius: 20px;
+  border-radius: 10px;
   color: white;
   font-family: poppins;
   font-weight: 200;
-  font-size: 14px;
+  font-size: 16px;
 }
 input:focus {
   background-color: #101818;
@@ -137,8 +131,13 @@ input:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
   -webkit-line-clamp: 1;
-  max-width: 90%;
+  width: 90%;
+  text-align: left;
   font-weight: 200;
   font-size: 16px;
+}
+.topic-div:hover {
+  background-color: #101818;
+  cursor: pointer;
 }
 </style>
