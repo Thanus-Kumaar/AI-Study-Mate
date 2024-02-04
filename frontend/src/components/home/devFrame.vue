@@ -94,9 +94,11 @@ export default {
 .socials a {
   margin: 0px 10px;
   transition: 0.2s;
+  color: white;
+  cursor: pointer; 
 }
 .socials a:hover {
-  color: rgb(62, 100, 182);
   transform: scale(1.1);
+  color: rgb(62, 100, 182);
 }
 </style>

@@ -4,11 +4,19 @@
       <img src="../../assets/Logo Text.svg" alt="logo" height="70px" />
     </div>
     <p>&copy; 2024 AI Study Mate. All rights reserved.</p>
-    <div class="contact">Contact Team</div>
+    <div class="scroll-button" @click="scrollToTop">&#11165;</div>
   </footer>
 </template>
 
-<script></script>
+<script>
+export default {
+  methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .footer {
@@ -27,17 +35,23 @@
   align-items: center;
 }
 
-.contact {
+.scroll-button {
   position: relative;
-  padding: 20px;
+  padding: 15px;
   font-weight: 300;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contact::before {
+.scroll-button::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 50px;
+  border-radius: 50%;
   padding: 2px;
   background: linear-gradient(to right, rgb(62, 100, 182), rgb(125, 144, 181));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -45,16 +59,15 @@
   mask-composite: exclude;
 }
 
-.contact:hover {
+.scroll-button:hover {
   cursor: pointer;
-  font-weight: 500;
 }
 
-.contact:active {
+.scroll-button:active {
   cursor: pointer;
   text-decoration: none;
   background: linear-gradient(to right, rgb(62, 100, 182), rgb(125, 144, 181));
-  border-radius: 50px;
+  border-radius: 50%;
   color: #101818;
 }
 </style>
