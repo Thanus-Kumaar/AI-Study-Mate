@@ -104,7 +104,7 @@ export default {
   color: #c3c3c3;
   overflow: scroll;
   padding: 10px 50px 10px 50px;
-  margin: 15px 5px 15px 5px;
+  margin: 25px 5px 15px 5px;
   flex: 1;
   border-radius: 15px;
   position: relative;

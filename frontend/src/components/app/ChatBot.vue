@@ -128,6 +128,7 @@ export default {
   display: flex;
   flex-direction: column;
   font-size: small;
+  margin: 25px 0 0 0;
 }
 .chat-div::-webkit-scrollbar {
   width: 0px;
