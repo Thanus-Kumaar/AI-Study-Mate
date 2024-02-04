@@ -23,9 +23,15 @@
         v-model="prompt_msg"
         @keyup.enter="handle_chat"
       />
-      <button class="send" @click="handle_chat">Send</button>
+      <button class="send" @click="handle_chat">
+        <i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i>
+      </button>
     </div>
-    <div class="scroll-down" @click="ScrollDown">|</div>
+    <div class="scroll-down" @click="ScrollDown">
+      <div style="margin-top: 3px;">
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -34,6 +40,9 @@ import axios from "axios";
 import MarkdownIt from "markdown-it";
 import ChatLoading from "./Utilities/chatLoading.vue";
 import MainMenu from "./Utilities/MainMenu.vue";
+
+import "@fortawesome/fontawesome-free/js/all.min.js";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default {
   data() {
@@ -92,7 +101,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap");
 
 *{
-  font-family: 'Poppins', sans-serif;;
+  font-family: 'Poppins', sans-serif;
 }
 .chat-div {
   position: relative;
@@ -100,7 +109,7 @@ export default {
   text-align: center;
   padding: 2px;
   border: 1px solid;
-  background-color: #101818;
+  background-color: #282E2E;
   display: flex;
   flex-direction: column;
   font-size: small;
@@ -110,8 +119,9 @@ export default {
 }
 .chat-container {
   flex: 1;
-  height: 90%;
+  height: 80%;
   overflow-y: scroll;
+  padding: 10px 2px 5px 2px;
 }
 
 .chat-container::-webkit-scrollbar {
@@ -122,8 +132,9 @@ export default {
   width: auto;
   max-width: 70%;
   margin: 5px;
-  border-radius: 10px;
-  background-color: #9cb2de;
+  border-radius: 10px 10px 0px 10px;
+  background-color: #3E64B6;
+  color: white;
   text-align: left;
   padding: 5px 10px 5px 10px;
   float: right;
@@ -132,10 +143,11 @@ export default {
 .chat-body-odd {
   height: auto;
   width: auto;
-  max-width: 70%;
+  max-width: 80%;
   margin: 5px;
-  border-radius: 10px;
-  background-color: #d1d3d7;
+  border-radius: 10px 10px 10px 0px;
+  background-color: #c3c3c3;
+  color: rgb(0, 0, 0);
   text-align: left;
   padding: 5px 10px 5px 10px;
   float: left;
@@ -152,14 +164,21 @@ export default {
   display: table;
 }
 .chat-input {
+  position: relative;
   vertical-align: bottom;
   margin: 0px 5px 5px 5px;
   width: 97%;
   height: 30px;
-  border-radius: 5px;
-  padding-left: 10px;
+  border: #3E64B6 2px solid;
+  border-radius: 20px;
+  background: none;
+  padding-left: 20px;
   font-size: 13px;
+  outline: none;
+  color: white;
 }
+
+
 .cancel {
   position: relative;
   left: 50%;
@@ -172,16 +191,25 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 5px;
+  text-align: center;
+  align-items: center;
 }
 .send {
-  height: 30px;
+  height: 40px;
+  width: 40px;
   margin: 3px;
+  border-radius: 50%;
+  border: none;
+  background-color: #3E64B6;
+}
+.send i{
+  margin-right: 2px;
 }
 .scroll-down{
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
-  background-color: rgba(111, 111, 111, 0.6);
+  background-color: rgba(204, 204, 204, 0.5);
   position: absolute;
   bottom: 55px;
   left: 50%;

@@ -80,7 +80,7 @@ GPTservices = {
   },
   GetQuizDetails : async (topic)=>{
     try{
-      let prompt = `Give me 5 deep questions and elaborate answers to assist me in understanding the topic: ${topic} in detail. The result shoud me in json format where each element in the array of json should have two keys: question and answer(answer should be in 200 words)`;
+      let prompt = `Give me 5 deep questions and elaborate answers to assist me in understanding the topic: ${topic} in detail. The result shoud me in markdown format like 'question: Content \\n answer: Content(answer should be in 200 words)'. Do not number the questions.`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
       console.log(response.text());
