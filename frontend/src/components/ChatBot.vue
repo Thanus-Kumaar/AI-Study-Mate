@@ -67,11 +67,15 @@ export default {
             const markdownText = Response.data;
             const md = new MarkdownIt();
             const renderedMarkdown = md.render(markdownText);
-            this.current_chat.push(renderedMarkdown);
+            if (renderedMarkdown !== "" && renderedMarkdown !== undefined) {
+              this.current_chat.push(renderedMarkdown);
+            }
+            else{
+              this.current_chat.push("Server responded with no answer");
+            }
           })
           .catch((err) => {
             this.loading = false;
-            this.current_chat.pop();
             console.error(err);
             this.current_chat.push("Error in sending prompt");
             this.loading = false;
@@ -80,7 +84,12 @@ export default {
       }
     },
     push_to_chat() {
-      if (this.prompt_msg !== "" && this.prompt_msg !== undefined) {
+      if (this.prompt_msg !== "" && this.prompt_msg !== undefined && this.current_chat.length<40) {
+        this.current_chat.push(this.prompt_msg);
+      }
+      if(this.prompt_msg !== "" && this.prompt_msg !== undefined && this.current_chat.length==40){
+        this.current_chat.shift();
+        this.current_chat.shift();
         this.current_chat.push(this.prompt_msg);
       }
     },
@@ -152,8 +161,11 @@ export default {
   padding: 5px 10px 5px 10px;
   float: left;
   clear: both;
+  overflow: auto;
 }
-
+.chat-body-odd::-webkit-scrollbar {
+  width: 0px;
+}
 .chat-body::-webkit-scrollbar {
   width: 0px;
 }
@@ -173,6 +185,7 @@ export default {
   border-radius: 20px;
   background: none;
   padding-left: 20px;
+  padding-right: 20px;
   font-size: 13px;
   outline: none;
   color: white;
