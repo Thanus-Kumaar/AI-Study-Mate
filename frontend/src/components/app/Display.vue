@@ -16,8 +16,8 @@
 <script>
 import MarkdownIt from "markdown-it";
 import axios from "axios";
-import TopicLoading from "./Utilities/topicLoading.vue";
-import Topics from "./Topics.vue";
+import TopicLoading from "../Utilities/topicLoading.vue";
+import Topics from "./TopicSection.vue";
 
 export default {
   data() {

@@ -32,8 +32,8 @@
 <script>
 import axios from "axios";
 import MarkdownIt from "markdown-it";
-import ChatLoading from "./Utilities/chatLoading.vue";
-import MainMenu from "./Utilities/MainMenu.vue";
+import ChatLoading from "../Utilities/chatLoading.vue";
+import MainMenu from "../Utilities/MainMenu.vue";
 
 export default {
   data() {

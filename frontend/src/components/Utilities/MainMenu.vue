@@ -1,116 +1,98 @@
 <template>
-  <div id="menuToggle">
-    <input type="checkbox" v-model="isMenuOpen" />
-    <span></span>
-    <span></span>
-    <span></span>
-    <transition name="fade">
-      <ul id="menu" v-if="isMenuOpen">
-        <a href="#"><li>History</li></a>
-        <a href="#"><li>Profile</li></a>
-        <a href="#"><li>Settings</li></a>
-      </ul>
-    </transition>
+  <div class="hamburger-menu">
+    <input id="menu__toggle" type="checkbox" />
+    <label class="menu__btn" for="menu__toggle">
+      <span></span>
+    </label>
+
+    <ul class="menu__box">
+      <li><a class="menu__item" href="#">Profile</a></li>
+      <li><a class="menu__item" href="#">Settings</a></li>
+      <li><a class="menu__item" href="#">History</a></li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      isMenuOpen: false,
-    };
-  },
+  data() {},
 };
 </script>
 
 <style>
-#menuToggle {
-  display: block;
-  position: relative;
-  z-index: 1;
-  -webkit-user-select: none;
-  user-select: none;
+#menu__toggle {
+  opacity: 0;
 }
-
-#menuToggle a {
-  text-decoration: none;
-  color: #232323;
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
 }
-
-#menuToggle a:hover {
-  color: #3e64b6;
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
 }
-
-#menuToggle input {
-  display: block;
-  width: 30px;
-  height: 30px;
-  position: absolute;
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+.menu__btn {
+  position: fixed;
+  top: 30px;
+  left: 200px;
+  width: 26px;
+  height: 26px;
   cursor: pointer;
-  top: -7px;
-  left: -5px;
-  opacity: 0;
-  z-index: 2;
-  -webkit-touch-callout: none;
-}
-
-#menuToggle span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin-bottom: 5px;
-  position: relative;
-  background: #cdcdcd;
-  border-radius: 3px;
   z-index: 1;
-  transform-origin: 4px 0px;
-  transition: transform 0.2s cubic-bezier(0.77, 0.2, 0.05, 1),
-    background 0.2s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.2s ease;
 }
-
-#menuToggle span:first-child {
-  transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2) {
-  transform-origin: 0% 100%;
-}
-
-#menuToggle input:checked ~ span {
-  opacity: 1;
-  transform: rotate(45deg) translate(0px, 1px);
-  background: #cdcdcd;
-}
-
-#menuToggle input:checked ~ span:nth-last-child(3) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-#menuToggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-#menu {
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
   position: absolute;
-  width: 150px;
-  padding: 50px;
-  background: #ededed;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
-  transform: translate(-90%, 0);
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition-duration: 0.25s;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+.menu__btn > span::before {
+  content: "";
+  top: -8px;
 }
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-  
+.menu__btn > span::after {
+  content: "";
+  top: 8px;
+}
+.menu__box {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 250px;
+  height: 100%;
+  margin-top: 70px;
+  padding: 0 0;
+  list-style: none;
+  background-color: #282e2e;
+  transition-duration: 0.25s;
+}
+.menu__item {
+  display: block;
+  padding: 8px 24px;
+  margin: 0 8px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  text-decoration: none;
+  transition-duration: 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__item:hover {
+  background: linear-gradient(to right, rgb(62, 100, 182), rgb(125, 144, 181));
 }
 </style>
