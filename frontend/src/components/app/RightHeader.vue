@@ -24,6 +24,11 @@ export default {
   components: {
     MainMenu,
   },
+  methods: {
+    addTopic() {
+      this.$emit("add-topic");
+    },
+  },
 };
 </script>
 

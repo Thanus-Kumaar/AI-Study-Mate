@@ -1,55 +1,36 @@
 <template>
   <div class="topic-outer-div">
-    <RightHeader />
-    <div
-      v-for="(topic, index) in topics"
-      class="topic-div"
-      :key="index"
-      @mouseenter="this.showOptions(index)"
-      @mouseleave="this.hideOptions(index)"
-    >
-      <div>{{ topic }}</div>
-      <transition @leave="this.leave" @enter="this.enter">
-        <div v-if="this.options[index] == 1" class="topic-options">
-          <div class="minor-options">
-            <i
-              class="fa-solid fa-trash-can"
-              style="color: #101818; margin-top: 2px"
-              @click="this.del(topic)"
-            ></i>
-            <i
-              class="fa-solid fa-pen-to-square"
-              style="color: #101818; margin-top: 2px;n"
-              @click="this.rename(index)"
-            ></i>
-          </div>
-          <div
-            style="
-              background-color: #3e64b6;
-              border-radius: 100%;
-              width: 25px;
-              height: 25px;
-            "
-          >
-            <div style="margin-top: 2px; margin-left: 1px">
-              <i
-                class="fa-solid fa-play fa-sm"
-                style="color: #f2f4f8"
-                @click="this.learn(topic)"
-              ></i>
-            </div>
-          </div>
+    <RightHeader @add-topic="newTopic" />
+    <div class="topics-container">
+      <div v-for="(topic, index) in topics" class="topic-div" :key="index">
+        <div class="active-button">
+          <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+            <!-- Adding a circular border around the existing circle -->
+            <circle
+              cx="50%"
+              cy="50%"
+              r="9"
+              fill="none"
+              stroke="rgb(62, 100, 182)"
+              stroke-width="1"
+            />
+            <!-- Centering the circle inside the SVG -->
+            <circle cx="50%" cy="50%" r="8" :fill="circleFillColor" />
+          </svg>
         </div>
-      </transition>
+        <div @click="this.learn(topic)" class="individual-topic">
+          {{ topic }}
+        </div>
+      </div>
+      <input
+        placeholder="Type topic"
+        v-model="this.inputVal"
+        @blur="this.enterTopicName"
+        v-if="this.inInput == true"
+        ref="Input"
+        @keyup.enter="this.enterTopicName"
+      />
     </div>
-    <input
-      placeholder="Type topic"
-      v-model="this.inputVal"
-      @blur="this.transferTopic"
-      v-if="this.inInput == true"
-      ref="Input"
-      @keyup.enter="this.transferTopic"
-    />
   </div>
 </template>
 
@@ -63,25 +44,25 @@ export default {
       inputVal: "",
       inInput: false,
       options: [],
+      circleFillColor: "#282e2e",
     };
   },
   methods: {
     learn(t) {
       this.$emit("topic-sent", t);
     },
-    addTopic() {
+    newTopic() {
       this.inInput = true;
       this.$nextTick(() => {
         this.$refs.Input.focus();
       });
     },
-    transferTopic() {
+    enterTopicName() {
       if (this.inputVal != "" && this.inputVal != undefined)
         this.topics.push(this.inputVal);
       this.inInput = false;
       this.inputVal = "";
       this.options.push(0);
-      console.log("HELLO", this.options);
     },
     del(t) {
       this.topics = this.topics.filter((topic) => topic !== t);
@@ -90,26 +71,8 @@ export default {
       const new_t = prompt("Rename the topic");
       this.topics[i] = new_t;
     },
-    showOptions(index) {
-      console.log(this.options);
-      this.options[index] = 1;
-    },
-    hideOptions(index) {
-      this.options[index] = 0;
-    },
-    enter() {
-      gsap.fromTo(
-        ".topic-options",
-        { duration: 0.1, opacity: 0, y: -10 },
-        { opacity: 1, y: 0, ease: "expo" }
-      );
-    },
-    leave() {
-      gsap.fromTo(
-        ".topic-options",
-        { duration: 1, opacity: 1, y: 0 },
-        { opacity: 0, y: -10, ease: "power1.out" }
-      );
+    changeFillColor(newColor) {
+      this.circleFillColor = newColor;
     },
   },
   mounted() {
@@ -128,7 +91,6 @@ export default {
 
 <style scoped>
 .topic-outer-div {
-  margin: 5px 2px 0px 0px;
   font-family: poppins;
   font-size: 17px;
   text-align: center;
@@ -137,77 +99,40 @@ export default {
   background-color: #282e2e;
   flex: 1;
 }
-
 .topic-outer-div::-webkit-scrollbar {
   width: 0px;
 }
-.add-div {
-  height: 40px;
-  width: 40px;
-  border-radius: 100%;
-  background-color: #101818;
-  position: relative;
-  top: -20px;
-  left: 20px;
-}
-.add-button {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  position: relative;
-  top: 5px;
-  border: none;
-  color: #ffff;
-  font-size: 20px;
-  background-color: #3e64b6;
+.topics-container {
+  margin: 20px 10px 20px 10px;
 }
 .topic-div {
-  margin-top: 5px;
-  padding: 5px;
-  padding-right: 0px;
-  font-size: 14px;
-  font-weight: 600;
-  width: 243px;
-  background-color: #f2f4f8;
-  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin: 0 0 0 5px;
+  border-radius: 10px;
 }
 input {
-  padding: 5px;
-  padding-right: 0px;
-  background-color: #f2f4f8;
-  width: 243px;
-  min-width: 143px;
-  text-align: center;
-  font-size: 14px;
+  width: 85%;
+  padding: 5px 15px 5px 15px;
+  background-color: #282e2e;
   font-family: poppins;
   border: none;
   outline: none;
   margin-top: 5px;
-  border-radius: 3px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 200;
+  font-size: 14px;
 }
-.topic-options {
-  background-color: #d1d3d7;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0px;
-  margin: 0px;
-  width: 230px;
-  padding: 5px;
-}
-
-.minor-options {
-  display: flex;
-  flex-direction: row;
-  column-gap: 20px;
-  margin: 3px 0px 0px 7px;
-}
-
 input:focus {
-  border: #3e64b6 2px solid;
+  background-color: #101818;
 }
-i:hover {
-  opacity: 0.5;
-  color: #000;
+.active-button {
+  margin: 0 10px 0 0;
+}
+.individual-topic {
+  display: flex;
+  align-items: center; /* Add this line to vertically center the content */
 }
 </style>
