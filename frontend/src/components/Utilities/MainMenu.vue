@@ -36,6 +36,7 @@ export default {
 }
 #menu__toggle:checked ~ .menu__box {
   left: 0 !important;
+  z-index: 2; /* Set a higher z-index for .menu__box */
 }
 .menu__btn {
   position: fixed;
@@ -76,6 +77,7 @@ export default {
   list-style: none;
   background-color: #282e2e;
   transition-duration: 0.25s;
+  z-index: 2; /* Set a higher z-index for .menu__box */
 }
 .menu__item {
   display: block;
