@@ -100,41 +100,49 @@ export default {
       script.onload = callback;
       document.head.appendChild(script);
     },
+    initAnimations() {
+      const wrappers = gsap.utils.toArray(".wrapper");
+
+      wrappers.forEach((wrapper, index) => {
+        gsap.to(wrapper, {
+          scrollTrigger: {
+            trigger: wrapper,
+            pin: true,
+            scrub: 0.5,
+            start: "20% 20%",
+            end: "+=70%",
+            markers: true,
+            snap: {
+              snapTo: 1 / wrappers.length,
+              duration: 0.3,
+              delay: 0.1 * index,
+              ease: "power3.inOut",
+            },
+          },
+        });
+      });
+    },
   },
   mounted() {
-    const wrappers = gsap.utils.toArray(".wrapper");
+    this.$nextTick(() => {
+      this.initAnimations();
 
-    wrappers.forEach((wrapper, index) => {
-      gsap.to(wrapper, {
-        scrollTrigger: {
-          trigger: wrapper,
-          pin: true,
-          scrub: 1,
-          snap: {
-            snapTo: 1 / wrappers.length,
-            duration: 0.1,
-            delay: 0.1 * index,
-            ease: "power3.inOut",
-          },
-        },
-      });
-    });
-
-    // Initialize Vanta after setting up ScrollTrigger
-    this.loadScript(() => {
-      this.vantaEffect = VANTA.FOG({
-        el: this.$refs.VantaBG,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        highlightColor: 0x424db1,
-        midtoneColor: 0x4263d1,
-        lowlightColor: 0x4d4dc7,
-        baseColor: 0x0,
-        blurFactor: 0.57,
-        speed: 1.3,
+      // Initialize Vanta after setting up ScrollTrigger
+      this.loadScript(() => {
+        this.vantaEffect = VANTA.FOG({
+          el: this.$refs.VantaBG,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          highlightColor: 0x424db1,
+          midtoneColor: 0x4263d1,
+          lowlightColor: 0x4d4dc7,
+          baseColor: 0x0,
+          blurFactor: 0.57,
+          speed: 1.3,
+        });
       });
     });
   },
@@ -142,6 +150,9 @@ export default {
 </script>
 
 <style>
+* {
+  scroll-behavior: smooth;
+}
 .features {
   width: 100%;
   text-align: center;
