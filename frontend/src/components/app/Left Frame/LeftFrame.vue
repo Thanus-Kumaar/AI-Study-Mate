@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; flex-direction: column">
+  <div class="left-frame">
     <topic @topic-sent="gotTopic" />
     <pomo-timer />     
   </div>
@@ -23,5 +23,9 @@ export default {
 </script>
 
 <style scoped>
-/* Your style code here */
+  .left-frame{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+  }
 </style>
