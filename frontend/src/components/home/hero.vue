@@ -1,5 +1,6 @@
 <template>
   <div ref="VantaBG" class="bg">
+    <div class="logo"><img src="../../assets/Logo Text.svg" alt="logo" /></div>
     <div class="bg-content">
       <div class="title-text">AI Study Mate</div>
       <div class="sub-title-text">Learn Smart, Learn Simple</div>
@@ -60,6 +61,11 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   width: 1000px;
+}
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 20px;
 }
 .title-text {
   font-family: poppins;
