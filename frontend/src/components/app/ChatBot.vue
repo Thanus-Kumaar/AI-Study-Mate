@@ -38,8 +38,8 @@
 <script>
 import axios from "axios";
 import MarkdownIt from "markdown-it";
-import ChatLoading from "./Utilities/chatLoading.vue";
-import MainMenu from "./Utilities/MainMenu.vue";
+import ChatLoading from "../Utilities/chatLoading.vue";
+import MainMenu from "../Utilities/MainMenu.vue";
 
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";

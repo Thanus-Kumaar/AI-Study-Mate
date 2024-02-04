@@ -7,12 +7,6 @@
       flex-direction: column;
     "
   >
-    <div class="topbar">
-      <div class="title">AI Study Mate</div>
-      <div class="menu-container">
-        <MainMenu />
-      </div>
-    </div>
     <div class="content-div">
       <div style="display: flex; flex-direction: column">
         <topic @topic-sent="gotTopic" />
@@ -25,7 +19,7 @@
 </template>
 
 <script>
-import MainMenu from "./Utilities/MainMenu.vue";
+import MainMenu from "../Utilities/MainMenu.vue";
 export default {
   data() {
     return {

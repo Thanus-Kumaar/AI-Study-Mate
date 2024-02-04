@@ -2,11 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {createRouter, createWebHistory} from 'vue-router';
 
-import Display from './components/Display.vue'
-import Topic from './components/Topics.vue'
-import ChatBot from './components/ChatBot.vue'
-import Pomodoro from './components/Pomodoro.vue'
-import MainApp from './components/MainApp.vue'
+import Display from './components/app/Display.vue'
+import Topic from './components/app/TopicSection.vue'
+import ChatBot from './components/app/ChatBot.vue'
+import Pomodoro from './components/app/Pomodoro.vue'
+import MainApp from './components/app/MainApp.vue'
 import Home from './components/home/Home.vue'
 
 const app = createApp(App)
