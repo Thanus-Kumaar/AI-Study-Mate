@@ -88,7 +88,6 @@ export default {
   font-size: 17px;
   text-align: center;
   width: 100%;
-  overflow: scroll;
   background-color: #282e2e;
   flex: 1;
   margin: 25px 0 0 0;
