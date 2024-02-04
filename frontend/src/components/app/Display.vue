@@ -14,7 +14,7 @@
 import MarkdownIt from "markdown-it";
 import axios from "axios";
 import TopicLoading from "../Utilities/topicLoading.vue";
-import Topics from "./TopicSection.vue";
+import Topics from "./Left Frame/TopicSection.vue";
 
 export default {
   data() {
@@ -59,7 +59,7 @@ export default {
         .catch((err) => {
           this.loading = false;
           console.log(err);
-          this.renderedMarkdown = "An ERROR occured in Server !"
+          this.renderedMarkdown = "An ERROR occured in Server !";
           alert(err);
         });
     },
@@ -90,7 +90,7 @@ export default {
         });
     },
     toTitleCase(str) {
-      return str.replace(/\w\S*/g, function(txt) {
+      return str.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
     },
@@ -117,7 +117,7 @@ export default {
   text-align: center;
   margin: auto;
 }
-.topic-name{
+.topic-name {
   display: block;
   text-align: center;
   font-size: 26px;
@@ -127,11 +127,11 @@ export default {
   z-index: 2;
   border-radius: 10px;
 }
-.markdown-div{
+.markdown-div {
   height: 100%;
   overflow: scroll;
 }
-.rendering-div{
+.rendering-div {
   display: flex;
   flex-direction: column;
   height: 100%;

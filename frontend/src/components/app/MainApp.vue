@@ -1,25 +1,14 @@
 <template>
-  <div
-    style="
-      height: 100vh;
-      background-color: #282e2e;
-      display: flex;
-      flex-direction: column;
-    "
-  >
+  <div style="padding: 10px; background-color: #282e2e;">
     <div class="content-div">
-      <div style="display: flex; flex-direction: column">
-        <topic @topic-sent="gotTopic" />
-        <pomo-timer />
-      </div>
+      <left-frame @topic-sent="gotTopic" />
       <display :topic="topic_to_send" />
-      <chat-bot />
+      <right-frame />
     </div>
   </div>
 </template>
 
 <script>
-import MainMenu from "../Utilities/MainMenu.vue";
 export default {
   data() {
     return {
@@ -27,11 +16,9 @@ export default {
       topic_to_send: "",
     };
   },
-  components: {
-    MainMenu,
-  },
   methods: {
     gotTopic(t) {
+      console.log("Got topic-main", t);
       this.topic = t;
       this.topic_to_send = this.topic;
     },
@@ -44,9 +31,9 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap");
 
 .content-div {
+  height: 100vh;
   display: flex;
   flex-direction: row;
-  flex: 1;
-  height: 100%;
+  background-color: #282e2e;
 }
 </style>
