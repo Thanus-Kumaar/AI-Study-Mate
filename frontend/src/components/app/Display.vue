@@ -3,12 +3,10 @@
     <div class="loading-div" v-if="this.loading">
       <TopicLoading />
     </div>
-    <div v-html="renderedMarkdown" v-else></div>
-    <div
-      style="display: flex; justify-content: right"
-      v-if="this.markdownText != ''"
-    >
-      <div class="save" @click="this.SaveTopic">Save</div>
+    <div class="rendering-div" v-else>
+      <div class="topic-name">{{ this.toTitleCase(this.topic) }}</div>
+      <div v-html="renderedMarkdown" class="markdown-div"></div>
+      <div class="save" @click="this.SaveTopic" v-if="this.markdownText != ''">Save</div>
     </div>
   </div>
 </template>
@@ -23,7 +21,7 @@ export default {
   data() {
     return {
       markdownText: "",
-      renderedMarkdown: "HELLO WORLD",
+      renderedMarkdown: "",
       loading: false,
     };
   },
@@ -62,6 +60,7 @@ export default {
         .catch((err) => {
           this.loading = false;
           console.log(err);
+          this.renderedMarkdown = "An ERROR occured in Server !"
           alert(err);
         });
     },
@@ -91,6 +90,11 @@ export default {
           console.log(err);
         });
     },
+    toTitleCase(str) {
+      return str.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    },
   },
 };
 </script>
@@ -102,7 +106,6 @@ export default {
 .main-div {
   background-color: #101818;
   color: #c3c3c3;
-  overflow: scroll;
   padding: 10px 50px 10px 50px;
   margin: 15px 5px 15px 5px;
   flex: 1;
@@ -111,15 +114,32 @@ export default {
   font-weight: 200;
   font-size: 15px;
 }
-
-.main-div::-webkit-scrollbar {
-  width: 0px;
-}
 .loading-div {
   text-align: center;
   margin: auto;
 }
-
+.topic-name{
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  background-color: #101818;
+  z-index: 2;
+  border-radius: 10px;
+}
+.markdown-div{
+  height: 100%;
+  overflow: scroll;
+}
+.rendering-div{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.markdown-div::-webkit-scrollbar {
+  width: 0px;
+}
 .save {
   text-align: center;
   width: 100px;
@@ -131,5 +151,7 @@ export default {
   border-radius: 7px;
   z-index: 10;
   margin-top: 10px;
+  position: absolute;
+  bottom: 0px;
 }
 </style>
