@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       markdownText: "",
-      renderedMarkdown: "",
+      renderedMarkdown: "HELLO WORLD",
       loading: false,
     };
   },
@@ -96,16 +96,17 @@ export default {
 </script>
 
 <style scoped>
+*{
+  font-family: poppins;
+}
 .main-div {
-  background-color: #f2f4f8;
-  width: 1100px;
-  max-height: 100%;
+  background-color: #101818;
+  color: white;
   overflow: scroll;
-  padding: 10px;
+  padding: 10px 15px 10px 15px;
+  margin: 15px 5px 15px 5px;
   flex: 1;
-  display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  border-radius: 15px;
   position: relative;
 }
 
