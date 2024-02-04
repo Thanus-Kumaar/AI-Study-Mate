@@ -87,7 +87,7 @@ export default {
   font-family: poppins;
   font-size: 17px;
   text-align: center;
-  width: 250px;
+  width: 100%;
   overflow: scroll;
   background-color: #282e2e;
   flex: 1;

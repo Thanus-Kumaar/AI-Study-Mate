@@ -38,8 +38,8 @@
 <script>
 import axios from "axios";
 import MarkdownIt from "markdown-it";
-import ChatLoading from "../Utilities/chatLoading.vue";
-import MainMenu from "../Utilities/MainMenu.vue";
+import ChatLoading from "../../Utilities/chatLoading.vue";
+import MainMenu from "../../Utilities/MainMenu.vue";
 
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -121,14 +121,15 @@ export default {
 }
 .chat-div {
   position: relative;
-  width: 450px;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
   padding: 2px;
   background-color: #282e2e;
   display: flex;
   flex-direction: column;
   font-size: small;
-  margin: 25px 0 0 0;
+  flex: 1;
 }
 .chat-div::-webkit-scrollbar {
   width: 0px;
@@ -137,7 +138,7 @@ export default {
   flex: 1;
   height: 80%;
   overflow-y: scroll;
-  padding: 10px 2px 5px 2px;
+  padding: 10px 5px 5px 5px;
 }
 
 .chat-container::-webkit-scrollbar {

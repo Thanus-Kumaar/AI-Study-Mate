@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 10px; background-color: #282e2e;">
+  <div style="background-color: #282e2e;">
     <div class="content-div">
       <left-frame @topic-sent="gotTopic" />
       <display :topic="topic_to_send" />
