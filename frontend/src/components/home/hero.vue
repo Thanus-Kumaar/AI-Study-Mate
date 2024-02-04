@@ -54,7 +54,6 @@ export default {
   width: 100%;
   height: 100vh;
 }
-
 .bg-content {
   position: absolute;
   top: 40vh;
@@ -62,7 +61,6 @@ export default {
   transform: translateX(-50%);
   width: 1000px;
 }
-
 .title-text {
   font-family: poppins;
   font-weight: 100;
@@ -71,7 +69,6 @@ export default {
   text-align: center;
   cursor: default;
 }
-
 .sub-title-text {
   font-family: Poppins;
   font-weight: 200;
@@ -80,12 +77,10 @@ export default {
   text-align: center;
   cursor: default;
 }
-
 .visit {
   text-align: center;
   margin-top: 20px;
 }
-
 .visit > button {
   font-size: 20px;
   padding: 20px;
