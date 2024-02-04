@@ -96,28 +96,28 @@ export default {
 </script>
 
 <style scoped>
-*{
+* {
   font-family: poppins;
 }
 .main-div {
   background-color: #101818;
-  color: white;
+  color: #c3c3c3;
   overflow: scroll;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 50px 10px 50px;
   margin: 15px 5px 15px 5px;
   flex: 1;
   border-radius: 15px;
   position: relative;
+  font-weight: 200;
+  font-size: 15px;
 }
 
-.main-div::-webkit-scrollbar{
+.main-div::-webkit-scrollbar {
   width: 0px;
 }
 .loading-div {
   text-align: center;
-  font-size: 24px;
-  padding: 10px;
-  margin: auto; 
+  margin: auto;
 }
 
 .save {
@@ -130,6 +130,6 @@ export default {
   color: #f2f4f8;
   border-radius: 7px;
   z-index: 10;
-  margin-top: 10px; /* Add some space between the loading div and the save button */
+  margin-top: 10px;
 }
 </style>

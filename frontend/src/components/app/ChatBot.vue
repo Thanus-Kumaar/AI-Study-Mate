@@ -24,11 +24,11 @@
         @keyup.enter="handle_chat"
       />
       <button class="send" @click="handle_chat">
-        <i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i>
+        <i class="fa-solid fa-paper-plane" style="color: #ffffff"></i>
       </button>
     </div>
     <div class="scroll-down" @click="ScrollDown">
-      <div style="margin-top: 3px;">
+      <div style="margin-top: 3px">
         <i class="fa-solid fa-angle-down"></i>
       </div>
     </div>
@@ -69,8 +69,7 @@ export default {
             const renderedMarkdown = md.render(markdownText);
             if (renderedMarkdown !== "" && renderedMarkdown !== undefined) {
               this.current_chat.push(renderedMarkdown);
-            }
-            else{
+            } else {
               this.current_chat.push("Server responded with no answer");
             }
           })
@@ -84,10 +83,18 @@ export default {
       }
     },
     push_to_chat() {
-      if (this.prompt_msg !== "" && this.prompt_msg !== undefined && this.current_chat.length<40) {
+      if (
+        this.prompt_msg !== "" &&
+        this.prompt_msg !== undefined &&
+        this.current_chat.length < 40
+      ) {
         this.current_chat.push(this.prompt_msg);
       }
-      if(this.prompt_msg !== "" && this.prompt_msg !== undefined && this.current_chat.length==40){
+      if (
+        this.prompt_msg !== "" &&
+        this.prompt_msg !== undefined &&
+        this.current_chat.length == 40
+      ) {
         this.current_chat.shift();
         this.current_chat.shift();
         this.current_chat.push(this.prompt_msg);
@@ -101,7 +108,7 @@ export default {
     ScrollDown() {
       const chatdiv = this.$refs.chat;
       chatdiv.scrollTop = chatdiv.scrollHeight;
-    }
+    },
   },
 };
 </script>
@@ -109,15 +116,15 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap");
 
-*{
-  font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
 .chat-div {
   position: relative;
   width: 450px;
   text-align: center;
   padding: 2px;
-  background-color: #282E2E;
+  background-color: #282e2e;
   display: flex;
   flex-direction: column;
   font-size: small;
@@ -141,7 +148,7 @@ export default {
   max-width: 70%;
   margin: 5px;
   border-radius: 10px 10px 0px 10px;
-  background-color: #3E64B6;
+  background-color: #3e64b6;
   color: white;
   text-align: left;
   padding: 5px 10px 5px 10px;
@@ -154,7 +161,7 @@ export default {
   max-width: 75%;
   margin: 5px;
   border-radius: 10px 10px 10px 0px;
-  background-color: #c3c3c3;
+  background-color: #989898;
   color: rgb(0, 0, 0);
   text-align: left;
   padding: 5px 10px 5px 10px;
@@ -179,7 +186,7 @@ export default {
   margin: 0px 5px 5px 5px;
   flex: 1;
   height: 30px;
-  border: #3E64B6 2px solid;
+  border: #3e64b6 2px solid;
   border-radius: 20px;
   background: none;
   padding-left: 20px;
@@ -202,12 +209,12 @@ export default {
   margin: 3px;
   border-radius: 50%;
   border: none;
-  background-color: #3E64B6;
+  background-color: #3e64b6;
 }
-.send i{
+.send i {
   margin-right: 2px;
 }
-.scroll-down{
+.scroll-down {
   height: 25px;
   width: 25px;
   border-radius: 50%;

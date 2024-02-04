@@ -98,6 +98,7 @@ export default {
   overflow: scroll;
   background-color: #282e2e;
   flex: 1;
+  margin: 15px 0 15px 0;
 }
 .topic-outer-div::-webkit-scrollbar {
   width: 0px;
@@ -109,19 +110,19 @@ export default {
   display: flex;
   flex-direction: row;
   color: white;
-  margin: 0 0 0 5px;
+  margin: 10px 0 0 5px;
   border-radius: 10px;
 }
 input {
   width: 85%;
   padding: 5px 15px 5px 15px;
   background-color: #282e2e;
-  font-family: poppins;
   border: none;
   outline: none;
   margin-top: 5px;
   border-radius: 20px;
   color: white;
+  font-family: poppins;
   font-weight: 200;
   font-size: 14px;
 }
@@ -132,7 +133,12 @@ input:focus {
   margin: 0 10px 0 0;
 }
 .individual-topic {
-  display: flex;
-  align-items: center; /* Add this line to vertically center the content */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-line-clamp: 1;
+  max-width: 90%;
+  font-weight: 200;
+  font-size: 16px;
 }
 </style>
