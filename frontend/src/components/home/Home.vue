@@ -1,6 +1,6 @@
 <template>
   <div class="page-div" style="background-color: #282e2e">
-    <div class="wrapper" style="height: 100vh">
+    <div style="height: 100vh">
       <Hero />
     </div>
     <div class="wrapper" style="height: 100vh">
@@ -111,7 +111,6 @@ export default {
             scrub: 0.5,
             start: "20% 20%",
             end: "+=70%",
-            markers: true,
             snap: {
               snapTo: 1 / wrappers.length,
               duration: 0.3,
