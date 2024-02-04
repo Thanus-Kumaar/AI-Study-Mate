@@ -40,6 +40,7 @@ export default {
   color: white;
   font-family: "Poppins", sans-serif;
 }
+
 .profile-card {
   width: 350px;
   height: 500px;
@@ -51,6 +52,7 @@ export default {
   justify-content: center;
   margin: 20px;
   transition: 0.3s;
+  cursor: default;
 }
 
 .profile-card:hover {
@@ -63,6 +65,11 @@ export default {
   border-radius: 100%;
   overflow: hidden;
   margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.profile-card:hover .profile-pic {
+  transform: scale(1.05);
 }
 
 .profile-pic img {
@@ -70,6 +77,7 @@ export default {
   height: 100%;
   object-fit: cover;
 }
+
 .content {
   text-align: center;
 }
@@ -85,18 +93,23 @@ export default {
   font-weight: 200;
   margin-bottom: 20px;
 }
+
 .socials {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 23px;
 }
+
 .socials a {
   margin: 0px 10px;
   transition: 0.2s;
+  color: white;
+  cursor: pointer;
 }
+
 .socials a:hover {
-  color: rgb(62, 100, 182);
   transform: scale(1.1);
+  color: rgb(62, 100, 182);
 }
 </style>

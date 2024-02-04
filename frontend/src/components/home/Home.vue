@@ -37,27 +37,18 @@
         <div class="developers">DEVELOPERS</div>
       </div>
       <div class="dev-flex">
-        <DevFrame
-          name="Tharun Kumarr A"
-          :imgSrc="tharunImg"
-          Position="Frontend Developer"
-          :socials="[
-            { name: 'GitHub', link: 'abc' },
-            { name: 'LinkedIn', link: 'abc' },
-            { name: 'GMail', link: 'abc' },
-          ]"
-        />
-        <DevFrame
-          class="dev-frame"
-          name="Thanus Kumaar A"
-          :imgSrc="thanusImg"
-          Position="Backend Developer"
-          :socials="[
-            { name: 'GitHub', link: 'abc' },
-            { name: 'LinkedIn', link: 'abc' },
-            { name: 'GMail', link: 'abc' },
-          ]"
-        />
+        <div v-for="dev in devs" :key="dev.id">
+          <DevFrame
+            :name="dev.name"
+            :imgSrc="dev.imgSrc"
+            :Position="dev.Position"
+            :socials="[
+              { name: 'GitHub', link: dev.socials[0].link },
+              { name: 'LinkedIn', link: dev.socials[1].link },
+              { name: 'GMail', link: dev.socials[2].link },
+            ]"
+          />
+        </div>
       </div>
     </div>
     <Footer />
@@ -80,7 +71,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default {
   data() {
-    return { tharunImg, thanusImg };
+    return {
+      tharunImg,
+      thanusImg,
+      devs: [
+        {
+          id: 1,
+          name: "Tharun Kumarr A",
+          imgSrc: tharunImg,
+          Position: "Frontend Developer",
+          socials: [
+            { name: "GitHub", link: "abc" },
+            { name: "LinkedIn", link: "abc" },
+            { name: "GMail", link: "abc" },
+          ],
+        },
+        {
+          id: 2,
+          name: "Thanus Kumaar A",
+          imgSrc: thanusImg,
+          Position: "Backend Developer",
+          socials: [
+            { name: "GitHub", link: "abc" },
+            { name: "LinkedIn", link: "abc" },
+            { name: "GMail", link: "abc" },
+          ],
+        },
+      ],
+    };
   },
   components: {
     Feature,
