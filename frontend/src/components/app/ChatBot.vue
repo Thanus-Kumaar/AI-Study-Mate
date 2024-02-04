@@ -117,7 +117,6 @@ export default {
   width: 450px;
   text-align: center;
   padding: 2px;
-  border: 1px solid;
   background-color: #282E2E;
   display: flex;
   flex-direction: column;
@@ -152,7 +151,7 @@ export default {
 .chat-body-odd {
   height: auto;
   width: auto;
-  max-width: 80%;
+  max-width: 75%;
   margin: 5px;
   border-radius: 10px 10px 10px 0px;
   background-color: #c3c3c3;
@@ -169,7 +168,6 @@ export default {
 .chat-body::-webkit-scrollbar {
   width: 0px;
 }
-
 .clearfix::after {
   content: "";
   clear: both;
@@ -179,7 +177,7 @@ export default {
   position: relative;
   vertical-align: bottom;
   margin: 0px 5px 5px 5px;
-  width: 97%;
+  flex: 1;
   height: 30px;
   border: #3E64B6 2px solid;
   border-radius: 20px;
@@ -190,20 +188,11 @@ export default {
   outline: none;
   color: white;
 }
-
-
-.cancel {
-  position: relative;
-  left: 50%;
-  top: -10px;
-  height: 0px;
-  cursor: pointer;
-}
 .chat {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5px;
+  margin: 5px 20px 10px 0px;
   text-align: center;
   align-items: center;
 }
@@ -222,10 +211,10 @@ export default {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background-color: rgba(204, 204, 204, 0.5);
+  background-color: rgba(170, 170, 170, 0.5);
   position: absolute;
-  bottom: 55px;
-  left: 50%;
+  bottom: 65px;
+  left: 45%;
   z-index: 5;
   cursor: pointer;
 }

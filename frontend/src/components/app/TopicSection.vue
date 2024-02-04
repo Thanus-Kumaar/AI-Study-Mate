@@ -128,7 +128,6 @@ export default {
 
 <style scoped>
 .topic-outer-div {
-  margin: 5px 2px 0px 0px;
   font-family: poppins;
   font-size: 17px;
   text-align: center;

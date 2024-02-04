@@ -2,7 +2,7 @@
   <div
     style="
       height: 100vh;
-      background-color: #101818;
+      background-color: #282e2e;
       display: flex;
       flex-direction: column;
     "
@@ -42,37 +42,11 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@300&display=swap");
-.topbar {
-  height: 5vh;
-  background-color: #3e64b6;
-  font-family: poppins;
-  text-align: center;
-  color: #ffff;
-  font-size: 20px;
-  border-bottom: 3px solid #101818;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title {
-  flex: 1;
-}
-
-.menu-container {
-  margin-right: 10px;
-}
 
 .content-div {
   display: flex;
   flex-direction: row;
-  column-gap: 3px;
   flex: 1;
-  overflow: scroll;
-}
-
-.content-div::-webkit-scrollbar {
-  width: 0px;
+  height: 100%;
 }
 </style>
