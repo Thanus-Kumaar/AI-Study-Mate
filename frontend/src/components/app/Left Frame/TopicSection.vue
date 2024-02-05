@@ -88,16 +88,20 @@ export default {
   font-size: 17px;
   text-align: center;
   width: 100%;
-  overflow: scroll;
   background-color: #282e2e;
   flex: 1;
-  margin: 25px 0 15px 0;
+  margin: 25px 0 0 0;
 }
 .topic-outer-div::-webkit-scrollbar {
   width: 0px;
 }
 .topics-container {
   margin: 20px 10px 20px 10px;
+  height: 400px;
+  overflow-y: scroll;
+}
+.topics-container::-webkit-scrollbar{
+  width: 0px;
 }
 .topic-div {
   display: flex;
