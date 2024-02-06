@@ -49,7 +49,7 @@
     color: white;
   }
   .add-button {
-  width: 70px;
+  width: 120px;
   height: 20px;
   border-radius: 20px;
   padding: 10px 16px;

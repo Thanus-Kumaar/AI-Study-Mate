@@ -19,7 +19,7 @@ import Topics from "./Left Frame/TopicSection.vue";
 export default {
   data() {
     return {
-      markdownText: "",
+      markdownText: "\t\t\tEnter New Topic and click on it to start your conversation.",
       renderedMarkdown: "",
       loading: false,
     };
@@ -33,6 +33,10 @@ export default {
   components: {
     TopicLoading,
     Topics,
+  },
+  mounted(){
+    const md = new MarkdownIt();  
+    this.renderedMarkdown = md.render(this.markdownText);
   },
   watch: {
     topic: {
@@ -112,6 +116,7 @@ export default {
   position: relative;
   font-weight: 200;
   font-size: 15px;
+  z-index: 5;
 }
 .loading-div {
   text-align: center;

@@ -2,7 +2,7 @@
   <div class="topic-outer-div">
     <RightHeader @add-topic="newTopic" />
     <div class="topics-container">
-      <div v-for="(topic, index) in topics" class="topic-div" :key="index">
+      <div v-for="(topic, index) in topics" class="topic-div" :key="index" @mouseover="this.setTopicOptions(index)" @mouseleave="this.optionIndex=null">
         <div class="active-button">
           <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
             <circle
@@ -15,8 +15,11 @@
             />
           </svg>
         </div>
-        <div @click="this.learn(topic)" class="individual-topic">
+        <div @click="this.learn(topic)" class="individual-topic" :key="index">
           {{ topic }}
+        </div>
+        <div class="topic-options" v-if="index == this.optionIndex" @click="">
+          <i class="fa-solid fa-ellipsis-vertical" style="color: #ffffff;"></i>
         </div>
       </div>
       <input
@@ -41,6 +44,7 @@ export default {
       inputVal: "",
       inInput: false,
       options: [],
+      optionIndex: -1,
     };
   },
   methods: {
@@ -67,6 +71,10 @@ export default {
       const new_t = prompt("Rename the topic");
       this.topics[i] = new_t;
     },
+    setTopicOptions(i){
+      this.optionIndex = i;
+      console.log(this.optionIndex);
+    }
   },
   mounted() {
     gsap.fromTo(
@@ -143,5 +151,8 @@ input:focus {
 .topic-div:hover {
   background-color: #101818;
   cursor: pointer;
+}
+.topic-options{
+  padding-right: 5px;
 }
 </style>
