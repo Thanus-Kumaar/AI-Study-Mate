@@ -119,8 +119,12 @@ export default {
   z-index: 5;
 }
 .loading-div {
-  text-align: center;
   margin: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: enter;
 }
 .topic-name {
   display: block;
