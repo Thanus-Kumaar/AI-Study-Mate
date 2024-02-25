@@ -1,11 +1,13 @@
 <template>
   <div class="top-logo-bar">
     <div class="logo" style="height: 60px">
-      <img
-        src="../../../assets/Logo Text.svg"
-        alt="logo"
-        style="width: 100%; height: 100%"
-      />
+      <a href="/">
+        <img
+          src="../../../assets/Logo Text.svg"
+          alt="logo"
+          style="width: 100%; height: 100%"
+        />
+      </a>
     </div>
     <div class="menu-container">
       <MainMenu />
@@ -27,6 +29,9 @@ export default {
   methods: {
     addTopic() {
       this.$emit("add-topic");
+    },
+    push() {
+      this.$router.push("/app");
     },
   },
 };

@@ -2,22 +2,8 @@
   <div class="topic-outer-div">
     <RightHeader @add-topic="newTopic" />
     <div class="topics-container">
-      <div v-for="(topic, index) in topics" class="topic-div" :key="index">
-        <div class="active-button">
-          <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
-            <circle
-              cx="50%"
-              cy="50%"
-              r="6"
-              fill="none"
-              stroke="rgb(62, 100, 182)"
-              stroke-width="1"
-            />
-          </svg>
-        </div>
-        <div @click="this.learn(topic)" class="individual-topic">
-          {{ topic }}
-        </div>
+      <div v-for="(topic, index) in topics" :key="index">
+        <Topic :topic="topic" @topic-sent="sendToApp"/>
       </div>
       <input
         placeholder="Type topic"
@@ -34,6 +20,7 @@
 <script>
 import gsap from "gsap";
 import RightHeader from "./LogoHeader.vue";
+import Topic from "./Topic.vue";
 export default {
   data() {
     return {
@@ -44,7 +31,8 @@ export default {
     };
   },
   methods: {
-    learn(t) {
+    sendToApp(t){
+      console.log("Got topic-main", t);
       this.$emit("topic-sent", t);
     },
     newTopic() {
@@ -78,7 +66,10 @@ export default {
   beforeUnmount() {
     gsap.to(".topic-outer-div", { opacity: 0, x: -100, ease: "power3.out" });
   },
-  components: { RightHeader },
+  components: {
+    RightHeader,
+    Topic,
+  },
 };
 </script>
 
@@ -100,17 +91,10 @@ export default {
   height: 400px;
   overflow-y: scroll;
 }
-.topics-container::-webkit-scrollbar{
+.topics-container::-webkit-scrollbar {
   width: 0px;
 }
-.topic-div {
-  display: flex;
-  flex-direction: row;
-  color: white;
-  border-radius: 10px;
-  cursor: default;
-  padding: 10px 5px 10px 5px;
-}
+
 input {
   width: 90%;
   padding: 10px 5px 10px 15px;
@@ -126,22 +110,5 @@ input {
 }
 input:focus {
   background-color: #101818;
-}
-.active-button {
-  margin: 0 10px 0 0;
-}
-.individual-topic {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  -webkit-line-clamp: 1;
-  width: 90%;
-  text-align: left;
-  font-weight: 200;
-  font-size: 16px;
-}
-.topic-div:hover {
-  background-color: #101818;
-  cursor: pointer;
 }
 </style>

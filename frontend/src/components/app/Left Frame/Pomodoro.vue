@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100px; height: 200px;"></div>
+  <div class="pomo-container"></div>
 </template>
 
 <script>
@@ -7,5 +7,8 @@
 </script>
 
 <style>
-
+.pomo-container {
+  width: 100%;
+  height: 100%;
+}
 </style>
