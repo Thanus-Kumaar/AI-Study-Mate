@@ -28,6 +28,7 @@ export default {
       inputVal: "",
       inInput: false,
       options: [],
+      optionIndex: -1,
     };
   },
   methods: {
@@ -55,6 +56,10 @@ export default {
       const new_t = prompt("Rename the topic");
       this.topics[i] = new_t;
     },
+    setTopicOptions(i){
+      this.optionIndex = i;
+      console.log(this.optionIndex);
+    }
   },
   mounted() {
     gsap.fromTo(
